@@ -1,0 +1,27 @@
+{
+  "name": "social-frontend-e2e",
+  "version": "1.0.0",
+  "private": true,
+  "description": "E2E tests for Social Frontend",
+  "scripts": {
+    "test": "playwright test --grep-invert @mutation",
+    "test:all": "cross-env RUN_MUTATION_TESTS=true playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:readonly": "playwright test --grep-invert @mutation",
+    "test:mutation": "cross-env RUN_MUTATION_TESTS=true playwright test --grep @mutation",
+    "test:desktop": "playwright test --project=desktop-chromium --grep-invert @mutation",
+    "test:mobile": "playwright test --project=mobile-chromium --grep @mobile",
+    "test:headed": "playwright test --headed --project=desktop-chromium --grep-invert @mutation",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^24.0.0",
+    "cross-env": "^10.0.0",
+    "dotenv": "^17.0.0",
+    "typescript": "^5.9.0"
+  }
+}
