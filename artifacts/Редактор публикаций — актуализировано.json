@@ -1,0 +1,2827 @@
+{
+  "schema_version": 1,
+  "exported_at": "2026-09-21T08:07:26Z",
+  "project": {
+    "id": 153,
+    "code": "ESN",
+    "title": "ESN-2024-11-15"
+  },
+  "selection": {
+    "scope": "suites",
+    "suite_ids": [
+      1159
+    ]
+  },
+  "summary": {
+    "suite_count": 1,
+    "test_case_count": 70,
+    "step_count": 278
+  },
+  "suites": [
+    {
+      "id": 1159,
+      "title": "Редактор публикаций",
+      "position": 12,
+      "path": [
+        "Редактор публикаций"
+      ],
+      "test_cases": [
+        {
+          "id": 10290,
+          "key": "ESN-368",
+          "title": "Кнопка \"Написать\" в шапке",
+          "position": 0,
+          "type": "API тестирование",
+          "status": "actual",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "not_set",
+          "layer": "not_set",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Она всегда там, открыть редактор можно в любом месте.",
+          "preconditions": "Открыта лента новостей",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Пройтись по всем страницам социальной сети",
+              "expected_result": "Написать всегда в шапке"
+            }
+          ]
+        },
+        {
+          "id": 10291,
+          "key": "ESN-369",
+          "title": "Нажатие на \"Написать\" в шапке открывает редактор публикаций",
+          "position": 1,
+          "type": "API тестирование",
+          "status": "actual",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "not_set",
+          "layer": "not_set",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка открытия редактора публикаций через кнопку «Написать» в шапке.",
+          "preconditions": "Открыта лента новостей",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Нажать на \"Написать\" в шапке",
+              "expected_result": "Открылось окно с редактором публикаций"
+            }
+          ]
+        },
+        {
+          "id": 10293,
+          "key": "ESN-371",
+          "title": "Интерфейс редактора публикаций",
+          "position": 2,
+          "type": "API тестирование",
+          "status": "actual",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "not_set",
+          "layer": "not_set",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка состава и расположения элементов редактора публикаций.",
+          "preconditions": "Открыта лента новостей",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Нажать на \"Написать\" в шапке",
+              "expected_result": "Открылось окно с редактором публикаций.\nВ шапке \"Новая публикация - будет опубликована на странице\" и селектор с названием группы (или моя страница). Справа селектор темы. Ниже \"Опубликовать от имени\" и селектор с именем (отображается если публикация в группу). И чекбокс \"Опубликовать анонимно\". Задизейблен если публикуешь в свою ленту. \nНиже панель инструментов. Ниже инпут для заголовка с плейсхолдером \"Заголовок публикации\". Ниже большое пространство для введения текста и прочего. Ниже свёрнутый раздел ТЕГИ для добавления хештега. В футере кнопки: \"Импорт\", \"Предпросмотр\", \"Сохранить в черновики\", Опубликовать \"Сейчас\" или \"В точное время\". А так же кнопка закрытия окна сверху справа в виде крестика."
+            }
+          ]
+        },
+        {
+          "id": 10292,
+          "key": "ESN-370",
+          "title": "Закрыть редактор публикаций",
+          "position": 3,
+          "type": "API тестирование",
+          "status": "actual",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "not_set",
+          "layer": "not_set",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка закрытия редактора публикаций кнопкой в правом верхнем углу.",
+          "preconditions": "Открыта лента новостей",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Нажать на \"Написать\" в шапке",
+              "expected_result": "Открылось окно с редактором публикаций"
+            },
+            {
+              "position": 2,
+              "action": "Нажать на  крестик сперва сверху в окне редактора",
+              "expected_result": "Окно закрылось"
+            }
+          ]
+        },
+        {
+          "id": 7655,
+          "key": "ESN-228",
+          "title": "Публикация поста без заголовка невозможна",
+          "position": 4,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка доступности действий в футере в зависимости от наличия заголовка.",
+          "preconditions": "Открыт редактор публикаций",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Сделать ховер по всем кнопкам в футере кроме \"Импорт\"",
+              "expected_result": "Тултип везде одинаковый - Без заголовка публикацию нельзя опубликовать"
+            },
+            {
+              "position": 2,
+              "action": "Ввести любой текст в заголовок",
+              "expected_result": "Кнопки в футере разблокировались"
+            },
+            {
+              "position": 3,
+              "action": "Ховер по тем же кнопкам",
+              "expected_result": "Тултипов нет"
+            },
+            {
+              "position": 4,
+              "action": "Удалить текст из заголовка",
+              "expected_result": "Кнопки снова заблокировались"
+            }
+          ]
+        },
+        {
+          "id": 7683,
+          "key": "ESN-256",
+          "title": "Селектор выбора темы публикации",
+          "position": 5,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "",
+          "preconditions": "Открыт редактор публикаций",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "В шапке нажать на селектор \"Тема\"",
+              "expected_result": "Появится выпадающий список тем"
+            },
+            {
+              "position": 2,
+              "action": "Выбрать любую тему",
+              "expected_result": "Название темы отобразилось в редакторе"
+            },
+            {
+              "position": 3,
+              "action": "Добавить в заголовок текст и опубликовать пост",
+              "expected_result": "В опубликованном посте корректно отображается название темы целиком."
+            },
+            {
+              "position": 4,
+              "action": "Повторить шаги 1-3 с ещё двумя темами",
+              "expected_result": "Результат должен быть аналогичен"
+            }
+          ]
+        },
+        {
+          "id": 7691,
+          "key": "ESN-264",
+          "title": "Селектор выбора места публикации при создании и редактировании",
+          "position": 6,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка работы селектора, публикация происходит в выбранной группе и в моей ленте",
+          "preconditions": "Пользователь авторизован, создана тестовая группа, открыт редактор публикаций",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "В шапке редактора нажать на селектор с названием группы, который находится справа от текста \"Новая публикация — будет опубликована на странице\"",
+              "expected_result": "Открылся выпадающий список групп"
+            },
+            {
+              "position": 2,
+              "action": "Выбрать тестовую группу",
+              "expected_result": "Текст кнопки изменился на название группы"
+            },
+            {
+              "position": 3,
+              "action": "Добавить заголовок и опубликовать пост",
+              "expected_result": "Пост опубликован"
+            },
+            {
+              "position": 4,
+              "action": "Зайти в тестовую группу",
+              "expected_result": "Только что созданная публикация отображается в группе"
+            },
+            {
+              "position": 5,
+              "action": "В шапке редактора нажать на текст-кнопку \"Опубликовать в группе (название группы)\"",
+              "expected_result": "Открылся выпадающий список групп"
+            },
+            {
+              "position": 6,
+              "action": "Открыть редаткор публикаций"
+            },
+            {
+              "position": 7,
+              "action": "Выбрать пункт \"Моя ленна\" с аватаром пользователя под которым вы были авторизованы",
+              "expected_result": "Текст сменился на \"Опубликовать в ленте\""
+            },
+            {
+              "position": 8,
+              "action": "Добавить заголовок и опубликовать пост",
+              "expected_result": "Пост опубликован"
+            },
+            {
+              "position": 9,
+              "action": "Перейти в свой профиль",
+              "expected_result": "Только что созданный пост отображается в персональной ленте пользователя"
+            }
+          ]
+        },
+        {
+          "id": 7700,
+          "key": "ESN-273",
+          "title": "Проверка максимального количества символов в Заголовке публикации",
+          "position": 7,
+          "type": "functional",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "high",
+          "behavior": "destructive",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Максимальная длина заголовка в текущем редакторе — 350 символов.",
+          "preconditions": "Пользователь авторизован. Открыт редактор публикаций.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести в заголовок 349 символов.",
+              "expected_result": "Отображаются все 349 символов; заголовок без ошибки."
+            },
+            {
+              "position": 2,
+              "action": "Добавить ещё один символ.",
+              "expected_result": "Отображаются 350 символов; заголовок без ошибки."
+            },
+            {
+              "position": 3,
+              "action": "Попытаться добавить 351-й символ.",
+              "expected_result": "Длина остаётся 350 символов; поле выделено красным и показана подсказка «Заголовок не длиннее 350 символов»."
+            }
+          ]
+        },
+        {
+          "id": 10294,
+          "key": "ESN-372",
+          "title": "Инструменты недоступны в заголовке",
+          "position": 8,
+          "type": "API тестирование",
+          "status": "actual",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "not_set",
+          "layer": "not_set",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Только ссылка доступна",
+          "preconditions": "Открыт редактор",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Фокус на инпут заголовка",
+              "expected_result": "Все инструменты кроме ссылки недоступны"
+            }
+          ]
+        },
+        {
+          "id": 7654,
+          "key": "ESN-227",
+          "title": "Опубликовать пост с заголовком",
+          "position": 9,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "high",
+          "behavior": "positive",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка на возможность публикации",
+          "preconditions": "Открыта личная страница пользователя на вкладке публикации.\nПользователь авторизован",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "В шапке нажать на синюю кнопку \"Написать\"",
+              "expected_result": "Открылся редаткор создания публикаций"
+            },
+            {
+              "position": 2,
+              "action": "Ввести в поле \"Заголовок\" текст",
+              "expected_result": "Текст отображается в поле заголовка, кнопка \"Сейчас\" стала активной, как и другие кнопки в футере редактора"
+            },
+            {
+              "position": 3,
+              "action": "Нажать \"Сейчас\"",
+              "expected_result": "В моей ленте новостей появилась публикация с введённым текстом"
+            }
+          ]
+        },
+        {
+          "id": 7656,
+          "key": "ESN-229",
+          "title": "Создание поста с валидным \nфото",
+          "position": 10,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка загрузки фотографии при создании публикации и отображения её после публикации.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлено валидное изображение.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок публикации.",
+              "expected_result": "Заголовок отображается, кнопка «Сейчас» доступна."
+            },
+            {
+              "position": 2,
+              "action": "Поставить курсор в область текста под заголовком и нажать на панели инструментов «Изображение».",
+              "expected_result": "Открывается выбор файла."
+            },
+            {
+              "position": 3,
+              "action": "Выбрать валидное изображение.",
+              "expected_result": "Изображение отображается в области содержимого редактора."
+            },
+            {
+              "position": 4,
+              "action": "Нажать «Сейчас».",
+              "expected_result": "Публикация с изображением появляется в выбранной ленте."
+            }
+          ]
+        },
+        {
+          "id": 7657,
+          "key": "ESN-230",
+          "title": "Добавление в пост фото превышающее допустимый вес файла",
+          "position": 11,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "negative",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка отказа в добавлении изображение при превышении ограничения 100 МБ.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций. В админке установлен максимальный размер файла 100 МБ (допустимый диапазон настройки — 1–2048 МБ). Подготовлен валидный файл соответствующего типа размером более 100 МБ.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести валидный заголовок и поставить курсор в область содержимого.",
+              "expected_result": "Панель инструментов для содержимого доступна."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Изображение» на панели инструментов.",
+              "expected_result": "Открывается выбор файла."
+            },
+            {
+              "position": 3,
+              "action": "Выбрать подготовленный файл размером более 100 МБ.",
+              "expected_result": "Редактор сообщает о превышении допустимого размера; файл не добавляется к публикации."
+            },
+            {
+              "position": 4,
+              "action": "Закрыть сообщение, если оно появилось отдельным окном.",
+              "expected_result": "Редактор остаётся открытым; ранее введённый заголовок сохранён."
+            }
+          ]
+        },
+        {
+          "id": 7658,
+          "key": "ESN-231",
+          "title": "Создание поста с фото с большого разрешения",
+          "position": 12,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "low",
+          "behavior": "positive",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Загружает 8к с разрешением 7680х4320",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлено изображение 8K размером не выше разрешённого веса.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и поставить курсор под ним.",
+              "expected_result": "Заголовок отображается; инструменты для содержимого доступны."
+            },
+            {
+              "position": 2,
+              "action": "На панели нажать «Изображение» и выбрать подготовленный файл 8K.",
+              "expected_result": "Изображение появляется в редакторе и не выходит за ширину области содержимого."
+            },
+            {
+              "position": 3,
+              "action": "Нажать «Сейчас».",
+              "expected_result": "Публикация с изображением появляется в выбранной ленте."
+            },
+            {
+              "position": 4,
+              "action": "Уменьшить ширину окна браузера.",
+              "expected_result": "Изображение подстраивается под ширину публикации без горизонтального переполнения."
+            }
+          ]
+        },
+        {
+          "id": 7659,
+          "key": "ESN-232",
+          "title": "Добавление в пост фото некорректного формата через проводник",
+          "position": 13,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка списка типов в выборе файла для изображения. Текущий пикер медиа допускает изображения и видео.",
+          "preconditions": "Пользователь авторизован. Открыт редактор публикаций.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Поставить курсор под заголовком и нажать «Изображение» на панели.",
+              "expected_result": "Открывается выбор медиафайла с фильтром изображений и видео."
+            },
+            {
+              "position": 2,
+              "action": "Проверить доступность файла неподдерживаемого типа, например .txt.",
+              "expected_result": "Файл неподдерживаемого типа не предлагается при действующем фильтре выбора."
+            },
+            {
+              "position": 3,
+              "action": "Отменить выбор файла.",
+              "expected_result": "Редактор остаётся открытым, вложение не добавлено."
+            }
+          ]
+        },
+        {
+          "id": 7674,
+          "key": "ESN-247",
+          "title": "Создание поста с валидным \nвидео",
+          "position": 14,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка добавления видео через панель инструментов и его воспроизведения после публикации.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлено валидное видео.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок публикации.",
+              "expected_result": "Заголовок отображается; кнопка «Сейчас» доступна."
+            },
+            {
+              "position": 2,
+              "action": "Поставить курсор в область содержимого и нажать «Видео» на панели инструментов.",
+              "expected_result": "Открывается выбор файла."
+            },
+            {
+              "position": 3,
+              "action": "Выбрать валидное видео.",
+              "expected_result": "Видео с кадром предпросмотра и действием «Выбрать обложку» появляется в редакторе."
+            },
+            {
+              "position": 4,
+              "action": "Нажать «Сейчас».",
+              "expected_result": "Публикация с видео появляется в выбранной ленте."
+            },
+            {
+              "position": 5,
+              "action": "Открыть публикацию детально и воспроизвести видео.",
+              "expected_result": "Загруженное видео воспроизводится."
+            }
+          ]
+        },
+        {
+          "id": 10284,
+          "key": "ESN-363",
+          "title": "Выбор превью при добавлении видео",
+          "position": 15,
+          "type": "API тестирование",
+          "status": "actual",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "not_set",
+          "layer": "not_set",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "",
+          "preconditions": "Пользователь авторизован; в открытом редакторе введён заголовок и добавлено валидное видео.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Нажать «Выбрать обложку» на видео.",
+              "expected_result": "Открывается окно «Обложка видео» с предпросмотром и шкалой времени."
+            },
+            {
+              "position": 2,
+              "action": "Передвинуть ползунок на другой кадр.",
+              "expected_result": "В окне показывается выбранный кадр."
+            },
+            {
+              "position": 3,
+              "action": "Нажать «Готово».",
+              "expected_result": "Окно закрывается; выбранный кадр виден на видео в редакторе."
+            },
+            {
+              "position": 4,
+              "action": "Нажать «Сейчас» и открыть опубликованную запись.",
+              "expected_result": "У видео отображается выбранная обложка."
+            }
+          ]
+        },
+        {
+          "id": 10295,
+          "key": "ESN-373",
+          "title": "Отмена выбора превью видео",
+          "position": 16,
+          "type": "API тестирование",
+          "status": "actual",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "not_set",
+          "layer": "not_set",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "",
+          "preconditions": "Пользователь авторизован; в открытом редакторе введён заголовок и добавлено валидное видео.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Запомнить текущую обложку видео и нажать «Выбрать обложку».",
+              "expected_result": "Открывается окно «Обложка видео»."
+            },
+            {
+              "position": 2,
+              "action": "Передвинуть ползунок на другой кадр.",
+              "expected_result": "В окне показывается другой кадр."
+            },
+            {
+              "position": 3,
+              "action": "Нажать «Отмена».",
+              "expected_result": "Окно закрывается; обложка видео в редакторе остаётся прежней."
+            }
+          ]
+        },
+        {
+          "id": 7660,
+          "key": "ESN-233",
+          "title": "Добавление в пост видео превышающее допустимый вес файла",
+          "position": 17,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка отказа в добавлении видео при превышении ограничения 100 МБ.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций. В админке установлен максимальный размер файла 100 МБ (допустимый диапазон настройки — 1–2048 МБ). Подготовлен валидный файл соответствующего типа размером более 100 МБ.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести валидный заголовок и поставить курсор в область содержимого.",
+              "expected_result": "Панель инструментов для содержимого доступна."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Видео» на панели инструментов.",
+              "expected_result": "Открывается выбор файла."
+            },
+            {
+              "position": 3,
+              "action": "Выбрать подготовленный файл размером более 100 МБ.",
+              "expected_result": "Редактор сообщает о превышении допустимого размера; файл не добавляется к публикации."
+            },
+            {
+              "position": 4,
+              "action": "Закрыть сообщение, если оно появилось отдельным окном.",
+              "expected_result": "Редактор остаётся открытым; ранее введённый заголовок сохранён."
+            }
+          ]
+        },
+        {
+          "id": 7661,
+          "key": "ESN-234",
+          "title": "Добавление в пост видео некорректного формата",
+          "position": 18,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен файл неподдерживаемого типа.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и поставить курсор под ним.",
+              "expected_result": "Панель инструментов для тела публикации доступна."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Видео» и проверить фильтр выбора файла.",
+              "expected_result": "Открывается системный выбор файлов с фильтром допустимых форматов."
+            },
+            {
+              "position": 3,
+              "action": "Отменить выбор файла неподдерживаемого типа.",
+              "expected_result": "Редактор остаётся открытым; вложение не добавлено."
+            }
+          ]
+        },
+        {
+          "id": 7675,
+          "key": "ESN-248",
+          "title": "Создание поста с валидным аудио файлом и его воспроизведение",
+          "position": 19,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен валидный аудиофайл.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок публикации.",
+              "expected_result": "Заголовок отображается; кнопка «Сейчас» доступна."
+            },
+            {
+              "position": 2,
+              "action": "Поставить курсор в область содержимого и нажать «Аудио» на панели инструментов.",
+              "expected_result": "Открывается выбор файла."
+            },
+            {
+              "position": 3,
+              "action": "Выбрать валидный аудиофайл.",
+              "expected_result": "В нижней части редактора появляется раздел «АУДИО» с названием файла."
+            },
+            {
+              "position": 4,
+              "action": "Нажать «Сейчас».",
+              "expected_result": "Публикация с аудиофайлом появляется в выбранной ленте."
+            },
+            {
+              "position": 5,
+              "action": "Открыть публикацию детально и включить аудиофайл.",
+              "expected_result": "Аудиофайл воспроизводится."
+            }
+          ],
+          "description": "Проверка добавления аудиофайла через панель инструментов и воспроизведения в опубликованной записи."
+        },
+        {
+          "id": 7663,
+          "key": "ESN-236",
+          "title": "Добавление в пост аудио превышающего допустимый вес файла",
+          "position": 20,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка отказа в добавлении аудиофайл при превышении ограничения 100 МБ.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций. Для аудио действует фиксированный максимальный размер 100 МБ. Подготовлен валидный файл соответствующего типа размером более 100 МБ.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести валидный заголовок и поставить курсор в область содержимого.",
+              "expected_result": "Панель инструментов для содержимого доступна."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Аудио» на панели инструментов.",
+              "expected_result": "Открывается выбор файла."
+            },
+            {
+              "position": 3,
+              "action": "Выбрать подготовленный файл размером более 100 МБ.",
+              "expected_result": "Редактор сообщает о превышении допустимого размера; файл не добавляется к публикации."
+            },
+            {
+              "position": 4,
+              "action": "Закрыть сообщение, если оно появилось отдельным окном.",
+              "expected_result": "Редактор остаётся открытым; ранее введённый заголовок сохранён."
+            }
+          ]
+        },
+        {
+          "id": 7664,
+          "key": "ESN-237",
+          "title": "Добавление в пост аудио файла некорректного формата",
+          "position": 21,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен файл неподдерживаемого типа.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и поставить курсор под ним.",
+              "expected_result": "Панель инструментов для тела публикации доступна."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Аудио» и проверить фильтр выбора файла.",
+              "expected_result": "Открывается системный выбор файлов с фильтром допустимых форматов."
+            },
+            {
+              "position": 3,
+              "action": "Отменить выбор файла неподдерживаемого типа.",
+              "expected_result": "Редактор остаётся открытым; вложение не добавлено."
+            }
+          ]
+        },
+        {
+          "id": 7677,
+          "key": "ESN-250",
+          "title": "Одновременное воспроизведение аудиофайлов в посте",
+          "position": 22,
+          "type": "other",
+          "status": "actual",
+          "severity": "trivial",
+          "priority": "low",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка поведения двух аудиоплееров в одной опубликованной записи.",
+          "preconditions": "Пользователь авторизован; подготовлена публикация с двумя аудиофайлами.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Открыть публикацию с двумя аудиофайлами.",
+              "expected_result": "Оба аудиофайла отображаются в разделе аудио."
+            },
+            {
+              "position": 2,
+              "action": "Запустить первый аудиофайл, затем второй.",
+              "expected_result": "Оба аудиофайла воспроизводятся одновременно, согласно текущему поведению плеера."
+            }
+          ]
+        },
+        {
+          "id": 7680,
+          "key": "ESN-253",
+          "title": "Функции аудиоплеера в опубликованном посте",
+          "position": 23,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "low",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка воспроизведения, громкости, скачивания и скорости аудио в опубликованной записи.",
+          "preconditions": "Пользователь авторизован; открыта опубликованная запись с аудиофайлом.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "В блоке поста с аудио файлом нажать на плей",
+              "expected_result": "Файл воспроизводится, звук присутствует"
+            },
+            {
+              "position": 2,
+              "action": "Во время воспроизведения изменить звук, понизить и потом повысить громкость",
+              "expected_result": "Громкость звука изменяется корректно"
+            },
+            {
+              "position": 3,
+              "action": "Нажать на 3 вертикальные точки рядом с дорожкой воспроизведения",
+              "expected_result": "Открылся попап с вариантами \"Скачать\" и \"Скорость воспроизведения\""
+            },
+            {
+              "position": 4,
+              "action": "Нажать \"Скачать\"",
+              "expected_result": "Аудио файл загрузился на устройство"
+            },
+            {
+              "position": 5,
+              "action": "Перейти в раздел загрузок на устройстве и проверить наличие файла и его работоспособность",
+              "expected_result": "Файл присутствует на устройстве и воспроизводится корректно"
+            },
+            {
+              "position": 6,
+              "action": "Повторить шаг 3 и нажать \"Скорость воспроизведения\"",
+              "expected_result": "Окно изменилось на выбор \"Параметры\" для перехода в предыдущее меню, и выбор скорости \"0,25\", \"0,5\", \"0,75\", \"Обычный\" с синей галочкой (скорость по умолчанию), \"1,25\", \"1.5\", \"1,75\" и \"2\""
+            },
+            {
+              "position": 7,
+              "action": "Выбрать \"0,25\" и воспроизвести аудио файл",
+              "expected_result": "Аудио воспроизводится с эффектом замедления"
+            }
+          ]
+        },
+        {
+          "id": 7678,
+          "key": "ESN-251",
+          "title": "Создание публикации с документом и скачивание файла",
+          "position": 24,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен валидный документ Word или PDF.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок публикации.",
+              "expected_result": "Заголовок отображается; кнопка «Сейчас» доступна."
+            },
+            {
+              "position": 2,
+              "action": "Поставить курсор под заголовком и нажать на панели инструментов «Документ (Word, PDF)».",
+              "expected_result": "Открывается выбор файла Word или PDF."
+            },
+            {
+              "position": 3,
+              "action": "Выбрать подготовленный документ.",
+              "expected_result": "Документ добавлен к публикации; видно название файла."
+            },
+            {
+              "position": 4,
+              "action": "Нажать «Сейчас».",
+              "expected_result": "Публикация с документом появляется в выбранной ленте."
+            },
+            {
+              "position": 5,
+              "action": "Открыть публикацию детально и скачать документ.",
+              "expected_result": "На устройство загружается файл с содержимым исходного документа."
+            }
+          ],
+          "description": "Проверка добавления документа через панель инструментов и скачивания из опубликованной записи."
+        },
+        {
+          "id": 7672,
+          "key": "ESN-245",
+          "title": "Добавление в пост документа превышающий допустимый вес файла",
+          "position": 25,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций. Для документов действует фиксированный максимальный размер 100 МБ. Подготовлен валидный файл соответствующего типа размером более 100 МБ.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести валидный заголовок и поставить курсор в область содержимого.",
+              "expected_result": "Панель инструментов для содержимого доступна."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Документ (Word, PDF)» на панели инструментов.",
+              "expected_result": "Открывается выбор файла."
+            },
+            {
+              "position": 3,
+              "action": "Выбрать подготовленный файл размером более 100 МБ.",
+              "expected_result": "Редактор сообщает о превышении допустимого размера; файл не добавляется к публикации."
+            },
+            {
+              "position": 4,
+              "action": "Закрыть сообщение, если оно появилось отдельным окном.",
+              "expected_result": "Редактор остаётся открытым; ранее введённый заголовок сохранён."
+            }
+          ],
+          "description": "Проверка отказа в добавлении документ при превышении ограничения 100 МБ."
+        },
+        {
+          "id": 7673,
+          "key": "ESN-246",
+          "title": "Добавление в пост документа некорректного формата",
+          "position": 26,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "low",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен файл неподдерживаемого типа.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и поставить курсор под ним.",
+              "expected_result": "Панель инструментов для тела публикации доступна."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Документ (Word, PDF)» и проверить фильтр выбора файла.",
+              "expected_result": "Открывается системный выбор файлов с фильтром допустимых форматов."
+            },
+            {
+              "position": 3,
+              "action": "Отменить выбор файла неподдерживаемого типа.",
+              "expected_result": "Редактор остаётся открытым; вложение не добавлено."
+            }
+          ]
+        },
+        {
+          "id": 7676,
+          "key": "ESN-249",
+          "title": "Прикрепление одинаковых файлов повторным добавлением",
+          "position": 27,
+          "type": "other",
+          "status": "draft",
+          "severity": "trivial",
+          "priority": "low",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка повторного добавления одного и того же документа в текущем редакторе.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен валидный документ Word или PDF.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и через кнопку «Документ (Word, PDF)» добавить подготовленный документ.",
+              "expected_result": "В редакторе отображается документ с названием файла."
+            },
+            {
+              "position": 2,
+              "action": "Через ту же кнопку повторно выбрать тот же документ.",
+              "expected_result": "Зафиксировать, создаётся ли второе вложение или интерфейс предотвращает дубликат."
+            },
+            {
+              "position": 3,
+              "action": "Если второе вложение создано, нажать «Сейчас».",
+              "expected_result": "В опубликованной записи отображаются оба добавленных документа."
+            }
+          ]
+        },
+        {
+          "id": 7662,
+          "key": "ESN-235",
+          "title": "Добавление файлов в пост методом Drag and Drop (перетаскивание)",
+          "position": 28,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлены тестовые фото, видео, аудиофайл и документ.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и поставить курсор в область содержимого.",
+              "expected_result": "Заголовок отображается; редактор готов к добавлению вложений."
+            },
+            {
+              "position": 2,
+              "action": "Перетащить подготовленные файлы из проводника в область редактора.",
+              "expected_result": "Зафиксировать, принимает ли текущий интерфейс перетаскивание и в каких разделах появляются файлы каждого типа."
+            },
+            {
+              "position": 3,
+              "action": "Если файлы добавились, проверить фото и видео в содержимом, аудио в разделе «АУДИО», документ среди вложений.",
+              "expected_result": "Результат соответствует текущему поведению выбора тех же файлов через панель инструментов."
+            }
+          ],
+          "description": "Проверка перетаскивания файлов в редактор. Текущий результат Drop требует ручной проверки: программное событие перетаскивания не было принято интерфейсом."
+        },
+        {
+          "id": 7666,
+          "key": "ESN-239",
+          "title": "Добавление 11 файлов одного типа за одну операцию",
+          "position": 29,
+          "type": "other",
+          "status": "draft",
+          "severity": "normal",
+          "priority": "undefined",
+          "behavior": "negative",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлено по 11 валидных файлов каждого типа (изображения, видео, аудио, документы). Размер каждого файла не превышает разрешённый для его типа.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок, поставить курсор под ним и нажать «Изображение».",
+              "expected_result": "Открывается выбор файлов с возможностью выделить несколько файлов."
+            },
+            {
+              "position": 2,
+              "action": "Выбрать сразу 11 валидных изображений и подтвердить выбор.",
+              "expected_result": "Все 11 изображений добавляются в редактор; сообщения о лимите в 10 файлов нет."
+            },
+            {
+              "position": 3,
+              "action": "В новой публикации повторить выбор сразу 11 валидных видео через кнопку «Видео».",
+              "expected_result": "Все 11 видео добавляются; сообщения о лимите в 10 файлов нет."
+            },
+            {
+              "position": 4,
+              "action": "В новой публикации повторить выбор сразу 11 валидных аудиофайлов через кнопку «Аудио».",
+              "expected_result": "В разделе «АУДИО» отображаются все 11 файлов; сообщения о лимите в 10 файлов нет."
+            },
+            {
+              "position": 5,
+              "action": "В новой публикации повторить выбор сразу 11 валидных документов через кнопку «Документ (Word, PDF)».",
+              "expected_result": "Добавляются все 11 документов; сообщения о лимите в 10 файлов нет."
+            }
+          ],
+          "description": "Проверка, что прежнее ограничение в 10 файлов не мешает выбрать и добавить 11 файлов одного типа за одну операцию. Это не проверка отсутствия любого верхнего предела."
+        },
+        {
+          "id": 7668,
+          "key": "ESN-241",
+          "title": "Возможность редактировать пост (в ленте новостей, группе, личном блоге, на отдельной странице поста) + отмена изменений",
+          "position": 30,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка сохранения и отмены изменений существующей публикации. Проверить отдельно в личной ленте и группе; при недоступности вложений допускается проверка текстового изменения.",
+          "preconditions": "Пользователь авторизован; подготовлены собственные опубликованные записи в личной ленте и тестовой группе.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Открыть собственную запись и в меню «Действия» выбрать «Редактировать».",
+              "expected_result": "Открывается редактор в режиме редактирования публикации."
+            },
+            {
+              "position": 2,
+              "action": "Изменить заголовок или текст; при наличии вложений удалить одно и добавить другое через панель.",
+              "expected_result": "Правки отображаются в редакторе."
+            },
+            {
+              "position": 3,
+              "action": "Сохранить изменения.",
+              "expected_result": "Редактор закрывается; в записи отображаются внесённые изменения."
+            },
+            {
+              "position": 4,
+              "action": "Снова открыть редактирование этой записи и изменить содержимое.",
+              "expected_result": "Новые несохранённые правки видны в редакторе."
+            },
+            {
+              "position": 5,
+              "action": "Закрыть редактирование без сохранения.",
+              "expected_result": "В опубликованной записи остаётся последняя сохранённая версия."
+            },
+            {
+              "position": 6,
+              "action": "Повторить проверку на собственной записи в тестовой группе.",
+              "expected_result": "Сохранение и отмена работают аналогично."
+            }
+          ]
+        },
+        {
+          "id": 7669,
+          "key": "ESN-242",
+          "title": "Проверка кнопок поста с числовым отображением \"Комментарии\", \"Поделились\", \"Просмотрено\"",
+          "position": 31,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "preconditions": "Пользователь авторизован. Открыта лента новостей. Тестовый пост в ленте создан, под ним нужно оставить несколько комментариев под другими аккаунтами, а так же репостнуть и поставить разные реакции",
+          "steps": [
+            {
+              "position": 1,
+              "action": "В блоке созданного поста нажать на кнопку \"Комментарии\"",
+              "expected_result": "Пост открылся детально, на отдельной странице и автоматически проскролился вниз до комментариев."
+            },
+            {
+              "position": 2,
+              "action": "Нажать на кнопку \"Поделились\"",
+              "expected_result": "Открылось окно со списком пользователей которые поделились данным постом."
+            },
+            {
+              "position": 3,
+              "action": "Нажать на кнопку \"Просмотрено\"",
+              "expected_result": "Открылось окно со списком пользователей которые просмотрели данный пост."
+            },
+            {
+              "position": 4,
+              "action": "Нажать на счётчик реакций у поста",
+              "expected_result": "Открылось окно со списком пользователей которые отреагировали на пост."
+            }
+          ]
+        },
+        {
+          "id": 7670,
+          "key": "ESN-243",
+          "title": "Добавление смайликов в пост",
+          "position": 32,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок с эмодзи с помощью клавиатуры или системной панели символов.",
+              "expected_result": "Эмодзи отображается в заголовке."
+            },
+            {
+              "position": 2,
+              "action": "Добавить текст под заголовком и вставить в него несколько эмодзи.",
+              "expected_result": "Эмодзи отображаются в тексте."
+            },
+            {
+              "position": 3,
+              "action": "Нажать «Сейчас» и открыть публикацию.",
+              "expected_result": "Эмодзи в заголовке и тексте отображаются без замены или потери."
+            }
+          ],
+          "description": "Проверка сохранения эмодзи в заголовке и тексте публикации. Отдельной кнопки эмодзи на текущей панели нет."
+        },
+        {
+          "id": 7681,
+          "key": "ESN-254",
+          "title": "Упоминание людей в посте",
+          "position": 33,
+          "type": "other",
+          "status": "actual",
+          "severity": "undefined",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка упоминания пользователя в тексте публикации.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; известен пользователь для упоминания.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "В тексте под заголовком ввести @ и часть имени пользователя.",
+              "expected_result": "Появляется список подходящих пользователей, который уточняется по мере ввода."
+            },
+            {
+              "position": 2,
+              "action": "Выбрать пользователя из списка.",
+              "expected_result": "Упоминание вставляется в текст как отдельный кликабельный элемент."
+            },
+            {
+              "position": 3,
+              "action": "Ввести заголовок и нажать «Сейчас».",
+              "expected_result": "Публикация с упоминанием появляется в выбранной ленте."
+            },
+            {
+              "position": 4,
+              "action": "Нажать на упоминание в опубликованной записи.",
+              "expected_result": "Открывается профиль выбранного пользователя."
+            }
+          ]
+        },
+        {
+          "id": 7686,
+          "key": "ESN-259",
+          "title": "Добавление ссылки в текст публикации через панель инструментов",
+          "position": 35,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен валидный HTTPS-адрес.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и текст под ним; выделить слово, которое должно стать ссылкой.",
+              "expected_result": "Слово выделено в теле публикации."
+            },
+            {
+              "position": 2,
+              "action": "Нажать на панели инструментов «Ссылка» и оставить вкладку «Внешняя».",
+              "expected_result": "Открывается поле «Введите URL»."
+            },
+            {
+              "position": 3,
+              "action": "Ввести подготовленный HTTPS-адрес и нажать «Применить».",
+              "expected_result": "Выделенное слово становится ссылкой; текст слова не заменяется адресом."
+            },
+            {
+              "position": 4,
+              "action": "Открыть «Предпросмотр» и проверить отображение ссылки.",
+              "expected_result": "Выделенный текст остаётся ссылкой с подготовленным адресом."
+            },
+            {
+              "position": 5,
+              "action": "Вернуться к редактированию, нажать «Сейчас» и открыть опубликованную запись.",
+              "expected_result": "Слово остаётся ссылкой в опубликованном тексте."
+            },
+            {
+              "position": 6,
+              "action": "Нажать ссылку в опубликованной записи.",
+              "expected_result": "Открывается подготовленный адрес."
+            }
+          ],
+          "description": "Проверка назначения внешнего URL выделенному фрагменту текста в области содержимого публикации."
+        },
+        {
+          "id": 7688,
+          "key": "ESN-261",
+          "title": "Форматирование текста с помощью панели инструментов",
+          "position": 36,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка применения и снятия форматирования в теле публикации через панель инструментов. Ссылка проверяется отдельно; инструменты тела недоступны в заголовке.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен текст для тела записи.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и текст с отдельными фрагментами для форматирования.",
+              "expected_result": "Заголовок и текст отображаются в редакторе."
+            },
+            {
+              "position": 2,
+              "action": "Выделить фрагмент в теле публикации и нажать «Жирный».",
+              "expected_result": "Выделенный фрагмент становится полужирным."
+            },
+            {
+              "position": 3,
+              "action": "Применить к другим фрагментам «Курсив», «Подчёркнутый» и «Зачёркнутый».",
+              "expected_result": "Каждый фрагмент получает выбранное форматирование."
+            },
+            {
+              "position": 4,
+              "action": "Выделить фрагмент и последовательно применить несколько поддерживаемых форматов.",
+              "expected_result": "К одному фрагменту применяются выбранные виды форматирования."
+            },
+            {
+              "position": 5,
+              "action": "Выделить форматированный фрагмент и повторно нажать применённые кнопки.",
+              "expected_result": "Соответствующее форматирование снимается."
+            },
+            {
+              "position": 6,
+              "action": "Нажать «Сейчас» и открыть опубликованную запись.",
+              "expected_result": "Оставленное форматирование текста сохранено."
+            }
+          ]
+        },
+        {
+          "id": 7690,
+          "key": "ESN-263",
+          "title": "Просмотр превью публикации в ленте новостей во время создания поста.",
+          "position": 37,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Внешне должен соответствовать макету, размеры, тултипы соответсвующей функциональной кнопки, контент никак не должен изменяться",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и достаточно длинный текст; при необходимости добавить медиа через панель инструментов.",
+              "expected_result": "В редакторе содержимое отображается в заданном порядке."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Предпросмотр» в футере.",
+              "expected_result": "Открывается окно «Предпросмотр публикации» с представлением записи."
+            },
+            {
+              "position": 3,
+              "action": "Если показано «Читать далее», нажать на него.",
+              "expected_result": "Текст раскрывается внутри предпросмотра."
+            },
+            {
+              "position": 4,
+              "action": "Нажать «К редактированию».",
+              "expected_result": "Окно предпросмотра закрывается; содержимое остаётся в редакторе."
+            }
+          ]
+        },
+        {
+          "id": 7692,
+          "key": "ESN-265",
+          "title": "Очистка редактора от контента при закрытии редактора по крестику или после обновления страницы",
+          "position": 38,
+          "type": "other",
+          "status": "draft",
+          "severity": "normal",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Оба действия должны очищать редактор от контента",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Добавить заголовок и текст без сохранения.",
+              "expected_result": "Содержимое отображается в редакторе."
+            },
+            {
+              "position": 2,
+              "action": "Закрыть редактор крестиком и подтвердить выход, если появится запрос.",
+              "expected_result": "Редактор закрывается."
+            },
+            {
+              "position": 3,
+              "action": "Снова открыть редактор через «Написать».",
+              "expected_result": "Зафиксировать, сохраняется ли несохранённое содержимое после закрытия."
+            },
+            {
+              "position": 4,
+              "action": "Повторить с новым несохранённым текстом и обновить страницу.",
+              "expected_result": "Зафиксировать, сохраняется ли содержимое после обновления страницы."
+            }
+          ]
+        },
+        {
+          "id": 7697,
+          "key": "ESN-270",
+          "title": "Копирование форматированного текста откуда-либо в описание должно сохранять форматирование",
+          "position": 39,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Копирование из ворда, гугл дока, с сайта, мессенджеров (скайп, телеграмм), заметок в телефоне и прочее",
+          "preconditions": "Пользователь авторизован. Открыта лента новостей. Открыт редактор публикаций. Предварительно создан вордовский документ с текстом и всевозможным форматированием этого текста, абзацы созданые через Enter и Shift + Enter. В мессенджерах подготовлен текст с абзацами.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Скопипастить из ворда в редактор текст",
+              "expected_result": "Текст вставлен и разделён на абзацы как в исходном файле, всё применённое форматирование и ссылки отображаются корректно, всё должно быть идентично оригиналу из вордовского файла."
+            },
+            {
+              "position": 2,
+              "action": "Провести с текстом различные манипуляции",
+              "expected_result": "Все действия должны отрабатывать корректно как и с текстом напечатанным непосредственно в редакторе."
+            },
+            {
+              "position": 3,
+              "action": "Повторить шаги 1 и 2 с текстом из мессенджеров вроде скайпа, телеграмма, файла .txt , с какого-нибудь сайта",
+              "expected_result": "Текст во всех случаях должен сохранять форматирование и корректно разбиваться на абзацы"
+            }
+          ]
+        },
+        {
+          "id": 7698,
+          "key": "ESN-271",
+          "title": "Копирование форматированного текста откуда-либо в заголовок не должно сохранять форматирование",
+          "position": 40,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Копирование из ворда, гугл дока, с сайта, мессенджеров (скайп, телеграмм), заметок в телефоне и прочее",
+          "preconditions": "Пользователь авторизован. Открыта лента новостей. Открыт редактор публикаций. Предварительно создан вордовский документ с текстом и всевозможным форматированием этого текста, абзацы созданые через Enter и Shift + Enter. В мессенджерах подготовлен текст с абзацами.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Скопипастить текст из ворда в заголовок",
+              "expected_result": "Текст вставлен в заголовок, всё форматирование было сброшено"
+            },
+            {
+              "position": 2,
+              "action": "Попытаться отформатировать текст через Ctrl+B/I/U",
+              "expected_result": "Текст не форматируется"
+            },
+            {
+              "position": 3,
+              "action": "Повторить шаги 1 и 2 с текстом из мессенджеров вроде скайпа, телеграмма, файла .txt , с какого-нибудь сайта",
+              "expected_result": "Форматирование текста во всех случаях сбрасывается"
+            },
+            {
+              "position": 4,
+              "action": "Открыть инлайн тулз заголовка выделив текст",
+              "expected_result": "Инлайн тулз не содержит элементов для форматирования текста, только ссылка, смайлик и действия назад и вперёд."
+            }
+          ]
+        },
+        {
+          "id": 7701,
+          "key": "ESN-274",
+          "title": "Проверка работы галереи медиафайлов (фото и видео)",
+          "position": 41,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "preconditions": "Пользователь авторизован. Открыта лента новостей. Создана публикация с фото и видео файлами",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Открыть тестовый пост детально",
+              "expected_result": "Пост открыт на отдельной странице"
+            },
+            {
+              "position": 2,
+              "action": "Нажать ЛКМ по фотографии",
+              "expected_result": "Открылась галерея с интерфейсом: место по порядку слева сверху, функции приближения, полноэкранного режима и закрытия галереи сверху справа, стрелочки переключения медиа слева и справа"
+            },
+            {
+              "position": 3,
+              "action": "Переключить на несколько фото вправо и влево",
+              "expected_result": "Во время переключения место слева сверху меняется"
+            },
+            {
+              "position": 4,
+              "action": "Приблизить изображение с помощью соответствующей иконки",
+              "expected_result": "Фото приближается, видео нельзя приблизить"
+            },
+            {
+              "position": 5,
+              "action": "Открыть в фулл скрин, потом закрыть",
+              "expected_result": "Полноэкранный режим открывается и закрывается"
+            },
+            {
+              "position": 6,
+              "action": "Переключить до видео и воспроизвести его",
+              "expected_result": "Видео воспроизводится"
+            },
+            {
+              "position": 7,
+              "action": "Закрыть галерею нажав на крестик",
+              "expected_result": "Галерея закрылась, воспроизведение видео прекратилось"
+            }
+          ]
+        },
+        {
+          "id": 7702,
+          "key": "ESN-275",
+          "title": "Превью публикации должно отображать всё форматирование в первом текстовом ноде",
+          "position": 42,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "steps": [
+            {
+              "position": 1,
+              "action": "В первом текстовом блоке применить к разным фрагментам поддерживаемое форматирование и ввести заголовок.",
+              "expected_result": "Форматирование видно в редакторе."
+            },
+            {
+              "position": 2,
+              "action": "Открыть предпросмотр публикации.",
+              "expected_result": "В первом текстовом блоке отображается применённое форматирование."
+            }
+          ],
+          "description": "Проверка отображения форматирования первого текстового блока в предпросмотре.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен текст для первого блока."
+        },
+        {
+          "id": 7703,
+          "key": "ESN-276",
+          "title": "Копирование и вставка текста откуда-либо без форматирования и без вложений",
+          "position": 43,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Копирование из ворда, гугл дока, с сайта, мессенджеров (скайп, телеграмм), заметок в телефоне и прочее. Текст должен отображаться в редакторе без изменений как во время работы в редакторе, так и после публикации.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Скопировать обычный текст без вложений из подготовленного источника и вставить в описание публикации.",
+              "expected_result": "Текст вставлен в редактор без дополнительных вложений."
+            },
+            {
+              "position": 2,
+              "action": "Опубликовать публикацию и открыть её.",
+              "expected_result": "Вставленный текст отображается без добавленных вложений и в том же порядке."
+            }
+          ],
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен образец обычного текста без вложений."
+        },
+        {
+          "id": 7704,
+          "key": "ESN-277",
+          "title": "Разбиение текста на абзацы при копировании откуда-либо",
+          "position": 44,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Копирование из ворда, гугл дока, с сайта, мессенджеров (скайп, телеграмм), заметок в телефоне и прочее. Текст должен отображаться в редакторе по абзацам как в ворде, в одном текстовом ноде, без изменений как во время работы в редакторе, так и после публикации.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Скопировать подготовленный текст с несколькими абзацами и вставить его в описание публикации.",
+              "expected_result": "Абзацы и порядок текста сохранены в редакторе."
+            },
+            {
+              "position": 2,
+              "action": "Опубликовать публикацию и открыть её.",
+              "expected_result": "Абзацы сохранены в опубликованном тексте."
+            }
+          ],
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен образец текста с несколькими абзацами."
+        },
+        {
+          "id": 7705,
+          "key": "ESN-278",
+          "title": "Копирование и вставка текста из ворда без форматирования, с изображением",
+          "position": 45,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Копирование из ворда, гугл дока, с сайта, мессенджеров (скайп, телеграмм), заметок в телефоне и прочее. Изображение должно быть в том же месте, встроено как отдельный нод, разбив текст на 2 текстовых нода, как во время работы в редакторе, так и после публикации.\nОжидаемый результат не согласован (С.Д.)",
+          "steps": []
+        },
+        {
+          "id": 7706,
+          "key": "ESN-279",
+          "title": "В просмотре превью можно развернуть пост по \"читать далее\"",
+          "position": 46,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "В развёрнутом посте должны отображаться все добавленные ноды и форматирование в такой же последовательности.",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Создать в редакторе достаточно длинную публикацию с несколькими текстовыми блоками и открыть предпросмотр.",
+              "expected_result": "В предпросмотре видна сокращённая публикация и действие «Читать далее»."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Читать далее».",
+              "expected_result": "Публикация раскрыта; блоки и их форматирование отображаются в исходной последовательности."
+            }
+          ],
+          "preconditions": "Пользователь авторизован; открыт редактор публикаций с длинным текстом, который в предпросмотре сворачивается."
+        },
+        {
+          "id": 7709,
+          "key": "ESN-282",
+          "title": "Всё форматирование должно отображаться в развёрнутом по \"Читать далее\" посте в ленте",
+          "position": 47,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "steps": [
+            {
+              "position": 1,
+              "action": "Открыть в ленте подготовленную длинную публикацию и нажать «Читать далее».",
+              "expected_result": "Публикация раскрыта полностью."
+            },
+            {
+              "position": 2,
+              "action": "Сравнить форматированные фрагменты с редактором и исходной публикацией.",
+              "expected_result": "Форматирование сохраняется в раскрытом тексте."
+            }
+          ],
+          "description": "Проверка форматирования длинной публикации после раскрытия по «Читать далее».",
+          "preconditions": "Пользователь авторизован; в ленте есть длинная публикация с форматированием и действием «Читать далее»."
+        },
+        {
+          "id": 9912,
+          "key": "ESN-329",
+          "title": "Открытие редактора через нажатие на инпут \"О чём вы хотите написать?\"",
+          "position": 48,
+          "type": "UI (e2e) тестирование",
+          "status": "actual",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "not_set",
+          "layer": "not_set",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка открытия редактора через нижнюю подсказку ленты «О чем вы хотите написать?».",
+          "preconditions": "Авторизован",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Открыть ленту новостей и прокрутить до нижней части.",
+              "expected_result": "Внизу отображается «О чем вы хотите написать?». "
+            },
+            {
+              "position": 2,
+              "action": "Нажать на подсказку.",
+              "expected_result": "Открывается редактор публикаций."
+            }
+          ]
+        },
+        {
+          "id": 9913,
+          "key": "ESN-330",
+          "title": "Инпут \"О чём вы хотите написать?\" скрывается при скроле ленты вниз",
+          "position": 49,
+          "type": "API тестирование",
+          "status": "draft",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "not_set",
+          "layer": "not_set",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка поведения нижней подсказки «О чем вы хотите написать?» при прокрутке ленты.",
+          "preconditions": "Авторизован, открыта лента новостей",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Открыть ленту и найти подсказку «О чем вы хотите написать?» внизу.",
+              "expected_result": "Подсказка отображается."
+            },
+            {
+              "position": 2,
+              "action": "Прокрутить ленту вниз и вверх.",
+              "expected_result": "Зафиксировать, когда подсказка видна и скрывается на текущем интерфейсе."
+            }
+          ]
+        },
+        {
+          "id": 9914,
+          "key": "ESN-331",
+          "title": "Импорт текста из файла",
+          "position": 50,
+          "type": "UI (e2e) тестирование",
+          "status": "actual",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "not_set",
+          "layer": "not_set",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "",
+          "preconditions": "Открыт редактор",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ховер по кнопке импорт",
+              "expected_result": "В тултипе - Импортировать текст из Word или текстового файла "
+            },
+            {
+              "position": 2,
+              "action": "Нажать",
+              "expected_result": "Открылся проводник"
+            },
+            {
+              "position": 3,
+              "action": "Выбрать ворд",
+              "expected_result": "Текст и картинки из файла добавлены в редактор сохраняя форматирование"
+            },
+            {
+              "position": 4,
+              "action": "Снова нажать на импорт"
+            },
+            {
+              "position": 5,
+              "action": "Выбрать txt файл",
+              "expected_result": "Содержимое добавлено в редактор"
+            }
+          ]
+        },
+        {
+          "id": 7708,
+          "key": "ESN-281",
+          "title": "Упоминание групп в посте",
+          "position": 51,
+          "type": "other",
+          "status": "deprecated",
+          "severity": "undefined",
+          "priority": "high",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Автоматизировано и работает только упоминание пользователя (23.08.2023)",
+          "preconditions": "Пользователь авторизован, открыт редактор постов",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "В текстовом ноде ввести символ @",
+              "expected_result": "Появился выпадающий список с пользователями"
+            },
+            {
+              "position": 2,
+              "action": "Ввести название группы",
+              "expected_result": "По мере ввода символов имени информация в окне динамически изменяется подбирая подходящие варианты под уже введённый текст"
+            },
+            {
+              "position": 3,
+              "action": "Выбрать из списка одну группу",
+              "expected_result": "Ссылка-упоминание выделилось серым фоном"
+            },
+            {
+              "position": 4,
+              "action": "Опубликовать сейчас",
+              "expected_result": "Пост опубликован и находится в ленте новостей социальной сети."
+            },
+            {
+              "position": 5,
+              "action": "Кликнуть по упоминанию группы в посте",
+              "expected_result": "Открылась страница группы"
+            }
+          ]
+        },
+        {
+          "id": 7644,
+          "key": "ESN-217",
+          "title": "Добавление публикации в черновики",
+          "position": 52,
+          "type": "other",
+          "status": "deprecated",
+          "severity": "normal",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка сохранения публикации в черновики через одноимённую кнопку футера.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и текст публикации.",
+              "expected_result": "Содержимое отображается в редакторе."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Сохранить в черновики».",
+              "expected_result": "Редактор закрывается, запись сохраняется как черновик."
+            },
+            {
+              "position": 3,
+              "action": "Открыть «Мои публикации» → «Черновики».",
+              "expected_result": "Сохранённая запись отображается в списке черновиков."
+            }
+          ]
+        },
+        {
+          "id": 7645,
+          "key": "ESN-218",
+          "title": "Публикация в точное время",
+          "position": 53,
+          "type": "other",
+          "status": "deprecated",
+          "severity": "normal",
+          "priority": "undefined",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка планирования публикации через кнопку «В точное время» и отображения записи в запланированных.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и нажать «В точное время».",
+              "expected_result": "Открывается окно «Публикация в точное время»."
+            },
+            {
+              "position": 2,
+              "action": "Выбрать допустимые дату и время: дату не раньше сегодняшней и время минимум на минуту позже текущего.",
+              "expected_result": "Выбранные дата и время отображаются; доступно подтверждение планирования."
+            },
+            {
+              "position": 3,
+              "action": "Подтвердить планирование.",
+              "expected_result": "Редактор закрывается; публикация появляется в «Мои публикации» → «Запланированные»."
+            }
+          ]
+        },
+        {
+          "id": 10297,
+          "key": "ESN-375",
+          "title": "Воспроизведение видео по ховеру",
+          "position": 54,
+          "type": "API тестирование",
+          "status": "actual",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "not_set",
+          "layer": "not_set",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "",
+          "preconditions": "Создан пост с видео, открыта лента с этим видео",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ховер по видео",
+              "expected_result": "Видео начало проигрываться без звука"
+            },
+            {
+              "position": 2,
+              "action": "Убрать курсор с видео",
+              "expected_result": "Видео отображает превью"
+            },
+            {
+              "position": 3,
+              "action": "Снова ховер по видео",
+              "expected_result": "Видео начало проигрываться сначала"
+            },
+            {
+              "position": 4,
+              "action": "Развернуть пост нажав на читать далее"
+            },
+            {
+              "position": 5,
+              "action": "Повторить шаги 1-3",
+              "expected_result": "Результат тот же"
+            },
+            {
+              "position": 6,
+              "action": "Открыть пост детально"
+            },
+            {
+              "position": 7,
+              "action": "Повторить шаги 1-3",
+              "expected_result": "Результат тот же"
+            }
+          ]
+        },
+        {
+          "id": 10298,
+          "key": "ESN-376",
+          "title": "Воспроизведение видео по клику",
+          "position": 55,
+          "type": "API тестирование",
+          "status": "actual",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "not_set",
+          "layer": "not_set",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "",
+          "preconditions": "Создан пост с видео, открыта лента с этим видео",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ховер по видео и клик",
+              "expected_result": "Открылся плеер на весь экран, видео начало проигрывать без звука"
+            },
+            {
+              "position": 2,
+              "action": "Клик по видео",
+              "expected_result": "Видео поставлено на паузу"
+            },
+            {
+              "position": 3,
+              "action": "Закрыть плеер"
+            },
+            {
+              "position": 4,
+              "action": "Открыть пост детально"
+            },
+            {
+              "position": 5,
+              "action": "Ховер по видео и клик",
+              "expected_result": "Вдео на паузе"
+            },
+            {
+              "position": 6,
+              "action": "Убрать курсор с видео",
+              "expected_result": "Отображается превью видео"
+            },
+            {
+              "position": 7,
+              "action": "Ховер по видео и клик, а затем её раз клик не убирая ховер с видео",
+              "expected_result": "Видео воспроизводится"
+            },
+            {
+              "position": 8,
+              "action": "Убрать курсор с видео",
+              "expected_result": "Видео воспроизводится"
+            }
+          ]
+        },
+        {
+          "id": 10299,
+          "key": "ESN-377",
+          "title": "Воспроизведение видео в плеере",
+          "position": 56,
+          "type": "API тестирование",
+          "status": "actual",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "not_set",
+          "layer": "not_set",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "",
+          "preconditions": "Создан пост с видео, открыта лента с этим видео",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ховер по видео и клик",
+              "expected_result": "Открылся плеер на весь экран, видео начало проигрывать без звука"
+            },
+            {
+              "position": 2,
+              "action": "Клик по видео",
+              "expected_result": "Видео поставлено на паузу"
+            },
+            {
+              "position": 3,
+              "action": "Клик на кнопку плей",
+              "expected_result": "Видео воспроизводится"
+            },
+            {
+              "position": 4,
+              "action": "Клик на кнопку пауза",
+              "expected_result": "Видео поставлено на паузу"
+            },
+            {
+              "position": 5,
+              "action": "Воспроизвести видео и потянуть ползунок громкости вправо и затем влево",
+              "expected_result": "Звук видео прибавляется вправо и убавляется влево"
+            },
+            {
+              "position": 6,
+              "action": "Кликнуть на ползунок на таймлайне",
+              "expected_result": "Видео играет с того места"
+            },
+            {
+              "position": 7,
+              "action": "Зажать клик на таймлайне и подвигать влево вправо",
+              "expected_result": "ползунок следует за курсором, кадры сменяются на видео"
+            },
+            {
+              "position": 8,
+              "action": "Сверху справа ховер на иконку квадрата",
+              "expected_result": "Тултип - \"Полноэкранный режим\""
+            },
+            {
+              "position": 9,
+              "action": "Нажать на кнопку \"Полноэкранный режим\"",
+              "expected_result": "Плеер развернулся в полноэкранный режим"
+            },
+            {
+              "position": 10,
+              "action": "Нажать эскейп",
+              "expected_result": "Полноэкранный режим закрылся"
+            }
+          ]
+        },
+        {
+          "title": "Воспроизведение видео в редакторе публикаций до публикации",
+          "position": 57,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка, что выбранное видео можно воспроизвести и остановить непосредственно в редакторе, не публикуя запись.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен валидный видеофайл.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и поставить курсор в область содержимого.",
+              "expected_result": "Панель инструментов для содержимого доступна."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Видео» и выбрать подготовленный видеофайл.",
+              "expected_result": "Видео отображается в редакторе с кадром предпросмотра."
+            },
+            {
+              "position": 3,
+              "action": "Запустить воспроизведение добавленного видео в редакторе.",
+              "expected_result": "Видео воспроизводится со звуком при наличии звуковой дорожки."
+            },
+            {
+              "position": 4,
+              "action": "Приостановить воспроизведение.",
+              "expected_result": "Видео останавливается на текущем кадре; редактор остаётся открытым."
+            }
+          ]
+        },
+        {
+          "title": "Открытие ссылки из опубликованной записи",
+          "position": 58,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка перехода по ссылке, ранее добавленной в текст публикации через панель инструментов.",
+          "preconditions": "Пользователь авторизован; открыта собственная опубликованная запись со ссылкой на подготовленный доступный HTTPS-адрес.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Найти слово или фрагмент текста, оформленный как ссылка.",
+              "expected_result": "Фрагмент визуально отличается от обычного текста и доступен для перехода."
+            },
+            {
+              "position": 2,
+              "action": "Нажать на ссылку.",
+              "expected_result": "Открывается именно подготовленный HTTPS-адрес."
+            },
+            {
+              "position": 3,
+              "action": "Вернуться к публикации и открыть контекстное меню ссылки.",
+              "expected_result": "Доступно стандартное действие браузера для открытия ссылки в новой вкладке или окне."
+            },
+            {
+              "position": 4,
+              "action": "Открыть ссылку в новой вкладке или окне.",
+              "expected_result": "В новой вкладке или окне открывается тот же подготовленный адрес."
+            }
+          ]
+        },
+        {
+          "title": "Вставка внешней ссылки без выделенного текста",
+          "position": 59,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка вставки URL отдельной кликабельной строкой в области содержимого под заголовком.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен доступный HTTPS-адрес.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и поставить текстовый курсор в пустую область содержимого под ним, ничего не выделяя.",
+              "expected_result": "Курсор находится под заголовком."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Ссылка» на панели инструментов и открыть вкладку «Внешняя».",
+              "expected_result": "Появляется поле «Введите URL» и кнопка «Применить»."
+            },
+            {
+              "position": 3,
+              "action": "Ввести подготовленный HTTPS-адрес и нажать «Применить».",
+              "expected_result": "В содержимом появляется кликабельный текст с полным адресом, начинающимся с https://."
+            },
+            {
+              "position": 4,
+              "action": "Открыть «Предпросмотр» и проверить отображение ссылки.",
+              "expected_result": "Полный адрес виден как ссылка."
+            },
+            {
+              "position": 5,
+              "action": "Вернуться к редактированию, нажать «Сейчас» и открыть опубликованную запись.",
+              "expected_result": "Ссылка с тем же адресом отображается в публикации."
+            },
+            {
+              "position": 6,
+              "action": "Нажать ссылку в опубликованной записи.",
+              "expected_result": "Открывается подготовленная страница."
+            }
+          ]
+        },
+        {
+          "title": "Ссылка на выделенный текст заголовка публикации",
+          "position": 60,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка назначения внешнего URL фрагменту заголовка без замены текста заголовка.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен доступный HTTPS-адрес.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и выделить в нём слово или фразу.",
+              "expected_result": "Нужный фрагмент заголовка выделен."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Ссылка», во вкладке «Внешняя» ввести адрес и нажать «Применить».",
+              "expected_result": "Выделенный фрагмент заголовка становится ссылкой; текст заголовка не изменяется."
+            },
+            {
+              "position": 3,
+              "action": "Открыть «Предпросмотр» и проверить заголовок.",
+              "expected_result": "Выделенный фрагмент заголовка остаётся ссылкой на подготовленный адрес."
+            },
+            {
+              "position": 4,
+              "action": "Вернуться к редактированию, нажать «Сейчас» и открыть опубликованную запись.",
+              "expected_result": "Ссылка сохранена в заголовке опубликованной записи."
+            },
+            {
+              "position": 5,
+              "action": "Нажать ссылку в заголовке опубликованной записи.",
+              "expected_result": "Открывается подготовленный адрес."
+            }
+          ]
+        },
+        {
+          "title": "Вставка ссылки на публикацию через поиск",
+          "position": 61,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка поиска существующей публикации и вставки ссылки с текстом её заголовка.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; существует доступная публикация с известным уникальным заголовком.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок новой записи, поставить курсор в область содержимого под ним и ввести короткий текст.",
+              "expected_result": "Текстовый курсор находится в области содержимого, не в заголовке."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Ссылка» и выбрать вкладку «Публикация».",
+              "expected_result": "Появляются поле «Поиск публикаций» и список публикаций."
+            },
+            {
+              "position": 3,
+              "action": "Ввести уникальную часть заголовка подготовленной публикации.",
+              "expected_result": "Список отфильтрован; нужная публикация находится по заголовку."
+            },
+            {
+              "position": 4,
+              "action": "Выбрать нужную публикацию.",
+              "expected_result": "В область содержимого вставляется ссылка, видимый текст которой равен заголовку выбранной публикации."
+            },
+            {
+              "position": 5,
+              "action": "Открыть «Предпросмотр» и проверить вставленную ссылку.",
+              "expected_result": "Заголовок выбранной публикации виден как текст ссылки."
+            },
+            {
+              "position": 6,
+              "action": "Вернуться к редактированию, нажать «Сейчас» и открыть новую опубликованную запись.",
+              "expected_result": "Ссылка с заголовком исходной публикации сохранена."
+            },
+            {
+              "position": 7,
+              "action": "Нажать на эту ссылку.",
+              "expected_result": "Открывается именно выбранная публикация."
+            }
+          ]
+        },
+        {
+          "title": "Выбор публикации для ссылки на следующей странице результатов",
+          "position": 62,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка постраничной навигации во вкладке «Публикация» и вставки ссылки из следующей страницы списка.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; доступно достаточно публикаций для нескольких страниц результатов.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок, поставить курсор в область содержимого и добавить короткий текст.",
+              "expected_result": "Курсор находится в теле публикации."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Ссылка» → «Публикация».",
+              "expected_result": "Открывается список публикаций с индикатором текущей страницы и кнопками «Назад» и «Вперёд»."
+            },
+            {
+              "position": 3,
+              "action": "Нажать «Вперёд».",
+              "expected_result": "Открывается следующая страница; индикатор номера страницы меняется, список обновляется."
+            },
+            {
+              "position": 4,
+              "action": "Выбрать одну публикацию на следующей странице и запомнить её заголовок.",
+              "expected_result": "В текст вставляется ссылка с заголовком выбранной публикации."
+            },
+            {
+              "position": 5,
+              "action": "Открыть «Предпросмотр» и проверить ссылку.",
+              "expected_result": "Заголовок выбранной публикации виден как текст ссылки."
+            },
+            {
+              "position": 6,
+              "action": "Вернуться к редактированию, нажать «Сейчас» и открыть новую опубликованную запись.",
+              "expected_result": "Ссылка с тем же заголовком сохранена в публикации."
+            },
+            {
+              "position": 7,
+              "action": "Нажать на ссылку.",
+              "expected_result": "Открывается выбранная на следующей странице публикация."
+            }
+          ]
+        },
+        {
+          "title": "Изменение размера шрифта в публикации",
+          "position": 63,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка размеров шрифта панели инструментов в редакторе, предпросмотре и опубликованной записи.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен текст для форматирования.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и несколько строк текста в области содержимого.",
+              "expected_result": "Текст отображается в редакторе; селектор «Размер шрифта» доступен."
+            },
+            {
+              "position": 2,
+              "action": "Для разных строк последовательно выбрать размеры 12, 14, 16, 18, 20, 24 и 32.",
+              "expected_result": "В редакторе размеры строк различаются в соответствии с выбранными значениями; текст не исчезает и не накладывается."
+            },
+            {
+              "position": 3,
+              "action": "Открыть «Предпросмотр».",
+              "expected_result": "Размеры и порядок строк сохранены; текст читаем и не обрезан."
+            },
+            {
+              "position": 4,
+              "action": "Вернуться к редактированию, нажать «Сейчас» и открыть опубликованную запись.",
+              "expected_result": "Размеры и порядок строк сохранены в опубликованном тексте; текст читаем и не обрезан."
+            }
+          ]
+        },
+        {
+          "title": "Выравнивание текста в публикации",
+          "position": 64,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка четырёх вариантов выравнивания текста во всех представлениях публикации.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлены четыре текстовых абзаца.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и четыре абзаца текста.",
+              "expected_result": "Абзацы отображаются в области содержимого."
+            },
+            {
+              "position": 2,
+              "action": "Для абзацев выбрать «По левому краю», «По центру», «По правому краю» и «По ширине».",
+              "expected_result": "Каждый абзац в редакторе выровнен выбранным способом."
+            },
+            {
+              "position": 3,
+              "action": "Открыть «Предпросмотр».",
+              "expected_result": "Выравнивание всех четырёх абзацев сохранено."
+            },
+            {
+              "position": 4,
+              "action": "Вернуться к редактированию, нажать «Сейчас» и открыть опубликованную запись.",
+              "expected_result": "Выравнивание всех четырёх абзацев сохранено в публикации."
+            }
+          ]
+        },
+        {
+          "title": "Заголовки трёх уровней в тексте публикации",
+          "position": 65,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка стилей «Заголовок 1», «Заголовок 2» и «Заголовок 3» в теле публикации.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен текст для трёх подзаголовков.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести основной заголовок публикации и три отдельные строки в теле.",
+              "expected_result": "Строки отображаются под основным заголовком."
+            },
+            {
+              "position": 2,
+              "action": "К строкам по очереди применить «Заголовок 1», «Заголовок 2» и «Заголовок 3».",
+              "expected_result": "В редакторе видны три различимых уровня подзаголовков."
+            },
+            {
+              "position": 3,
+              "action": "Открыть «Предпросмотр».",
+              "expected_result": "Все три уровня и порядок строк сохранены."
+            },
+            {
+              "position": 4,
+              "action": "Вернуться к редактированию, нажать «Сейчас» и открыть опубликованную запись.",
+              "expected_result": "Все три уровня и порядок строк сохранены в публикации."
+            }
+          ]
+        },
+        {
+          "title": "Цитата в тексте публикации",
+          "position": 66,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка блока «Цитата» в редакторе, предпросмотре и опубликованной записи.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен текст цитаты и обычный текст.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок, обычный абзац и отдельный абзац для цитаты.",
+              "expected_result": "Оба абзаца видны в редакторе."
+            },
+            {
+              "position": 2,
+              "action": "Применить к отдельному абзацу инструмент «Цитата».",
+              "expected_result": "Абзац оформлен как цитата и визуально отличается от обычного текста."
+            },
+            {
+              "position": 3,
+              "action": "Открыть «Предпросмотр».",
+              "expected_result": "Цитата сохраняет оформление и положение относительно обычного текста."
+            },
+            {
+              "position": 4,
+              "action": "Вернуться к редактированию, нажать «Сейчас» и открыть опубликованную запись.",
+              "expected_result": "Цитата отображается с тем же оформлением и в том же месте."
+            }
+          ]
+        },
+        {
+          "title": "Блок кода в тексте публикации",
+          "position": 67,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка инструмента «Код» и сохранения пробелов и переносов строк в блоке.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлен короткий фрагмент кода с отступами и переносами строк.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и фрагмент кода в теле публикации.",
+              "expected_result": "Фрагмент присутствует в редакторе."
+            },
+            {
+              "position": 2,
+              "action": "Применить к фрагменту инструмент «Код».",
+              "expected_result": "Фрагмент отображается как кодовый блок; отступы и переносы строк сохранены."
+            },
+            {
+              "position": 3,
+              "action": "Открыть «Предпросмотр».",
+              "expected_result": "Кодовый блок виден; отступы и переносы строк не потеряны."
+            },
+            {
+              "position": 4,
+              "action": "Вернуться к редактированию, нажать «Сейчас» и открыть опубликованную запись.",
+              "expected_result": "Кодовый блок и его структура сохранены в публикации."
+            }
+          ]
+        },
+        {
+          "title": "Разделитель между блоками публикации",
+          "position": 68,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка вставки и отображения инструмента «Разделитель».",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлены два текстовых блока.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и первый текстовый блок, затем поставить курсор между блоками.",
+              "expected_result": "Курсор находится между двумя частями содержимого."
+            },
+            {
+              "position": 2,
+              "action": "Нажать «Разделитель» на панели инструментов.",
+              "expected_result": "В редакторе появляется видимый разделитель между блоками."
+            },
+            {
+              "position": 3,
+              "action": "Открыть «Предпросмотр».",
+              "expected_result": "Разделитель виден между теми же блоками."
+            },
+            {
+              "position": 4,
+              "action": "Вернуться к редактированию, нажать «Сейчас» и открыть опубликованную запись.",
+              "expected_result": "Разделитель сохраняется между блоками публикации."
+            }
+          ]
+        },
+        {
+          "title": "Маркированный список в публикации",
+          "position": 69,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка отображения и порядка пунктов маркированного списка.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлены три разных пункта списка.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и три пункта текста отдельными строками.",
+              "expected_result": "Три строки отображаются в редакторе."
+            },
+            {
+              "position": 2,
+              "action": "Применить к ним «Маркированный список».",
+              "expected_result": "Каждый пункт получает маркер; порядок пунктов сохранён."
+            },
+            {
+              "position": 3,
+              "action": "Открыть «Предпросмотр».",
+              "expected_result": "Все три маркера и порядок пунктов видны."
+            },
+            {
+              "position": 4,
+              "action": "Вернуться к редактированию, нажать «Сейчас» и открыть опубликованную запись.",
+              "expected_result": "Все три маркера и порядок пунктов сохранены в публикации."
+            }
+          ]
+        },
+        {
+          "title": "Нумерованный список в публикации",
+          "position": 70,
+          "type": "other",
+          "status": "draft",
+          "severity": "undefined",
+          "priority": "medium",
+          "behavior": "undefined",
+          "layer": "unknown",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": false,
+          "muted_case": false,
+          "description": "Проверка отображения и последовательности пунктов нумерованного списка.",
+          "preconditions": "Пользователь авторизован, открыт редактор публикаций; подготовлены три разных пункта списка.",
+          "postconditions": "",
+          "steps": [
+            {
+              "position": 1,
+              "action": "Ввести заголовок и три пункта текста отдельными строками.",
+              "expected_result": "Три строки отображаются в редакторе."
+            },
+            {
+              "position": 2,
+              "action": "Применить к ним «Нумерованный список».",
+              "expected_result": "Пункты получают последовательные номера в исходном порядке."
+            },
+            {
+              "position": 3,
+              "action": "Открыть «Предпросмотр».",
+              "expected_result": "Номера и порядок всех трёх пунктов сохранены."
+            },
+            {
+              "position": 4,
+              "action": "Вернуться к редактированию, нажать «Сейчас» и открыть опубликованную запись.",
+              "expected_result": "Номера и порядок всех трёх пунктов сохранены в публикации."
+            }
+          ]
+        }
+      ],
+      "suites": []
+    }
+  ]
+}

@@ -25,4 +25,22 @@ test.describe('@smoke Основная навигация', () => {
     await page.goto('/');
     await expect(page).toHaveURL(/\/feed/);
   });
+
+  test('ESN-26: гамбургер открывает боковую панель и все её разделы', async ({ page }) => {
+    const groupsLink = page.getByRole('link', { name: 'Группы', exact: true });
+    const menu = page.getByRole('button', { name: '' }).first();
+    await expect(groupsLink).toBeVisible();
+    await menu.click();
+    await expect(groupsLink).toBeHidden();
+    await menu.click();
+    await expect(groupsLink).toBeVisible();
+
+    for (const item of cases) {
+      await page.getByText(item.name, { exact: true }).first().click();
+      await expect(page).toHaveURL(item.path);
+    }
+    await expect(page.getByRole('button', { name: /^Опубликованные/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: /^Запланированные/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: /^Черновики/ })).toBeVisible();
+  });
 });

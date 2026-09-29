@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "exported_at": "2026-09-22T13:00:00+04:00",
+  "project": { "id": 153, "code": "ESN", "title": "ESN-2024-11-15" },
+  "selection": { "scope": "suites", "suite_ids": [1154] },
+  "summary": { "suite_count": 1, "test_case_count": 1, "step_count": 4 },
+  "suites": [
+    {
+      "id": 1154,
+      "title": "Группы",
+      "position": 9,
+      "path": ["Группы"],
+      "test_cases": [
+        {
+          "id": null,
+          "key": null,
+          "title": "Ограничение 16 МБ при выборе изображения группы",
+          "position": 66,
+          "type": "UI (e2e) тестирование",
+          "status": "actual",
+          "severity": "medium",
+          "priority": "medium",
+          "behavior": "negative",
+          "layer": "e2e",
+          "automation_status": "manual",
+          "is_flaky": false,
+          "to_be_automated": true,
+          "muted_case": false,
+          "description": "Ограничение относится к изображению группы, а не ко всем вложениям сервиса. Проверяется исходный файл до сохранения и обрезки.",
+          "preconditions": "Пользователь является администратором временной группы; подготовлен корректный PNG размером больше 16 МБ.",
+          "steps": [
+            { "position": 1, "action": "Открыть редактирование группы и область загрузки баннера/аватара.", "expected_result": "Доступен выбор изображения." },
+            { "position": 2, "action": "Выбрать корректный PNG размером больше 16 МБ.", "expected_result": "Появляется сообщение о превышении ограничения 16 МБ." },
+            { "position": 3, "action": "Проверить состояние редактора.", "expected_result": "Файл не принят в preview; сохранить его в качестве изображения группы нельзя." },
+            { "position": 4, "action": "Закрыть редактор и удалить временную группу.", "expected_result": "Тестовые данные очищены." }
+          ]
+        }
+      ],
+      "suites": []
+    }
+  ]
+}

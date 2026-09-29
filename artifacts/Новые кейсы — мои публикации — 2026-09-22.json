@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "exported_at": "2026-09-22T12:49:49+04:00",
+  "project": { "id": 153, "code": "ESN", "title": "ESN-2024-11-15" },
+  "selection": { "scope": "suites", "suite_ids": [] },
+  "summary": { "suite_count": 1, "test_case_count": 4, "step_count": 13 },
+  "suites": [
+    {
+      "id": null,
+      "title": "Мои публикации",
+      "position": 0,
+      "path": ["Мои публикации"],
+      "test_cases": [
+        {
+          "id": null,
+          "key": null,
+          "title": "Переход на вкладку «Скрытые» и сохранение после обновления",
+          "position": 0,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "medium",
+          "behavior": "positive",
+          "layer": "e2e",
+          "automation_status": "automated",
+          "is_flaky": false,
+          "to_be_automated": true,
+          "muted_case": false,
+          "description": "Проверка отдельной вкладки скрытых публикаций без зависимости от содержимого общего аккаунта.",
+          "preconditions": "Пользователь авторизован.",
+          "steps": [
+            { "position": 1, "action": "Открыть «Мои публикации».", "expected_result": "Отображается вкладка «Скрытые»." },
+            { "position": 2, "action": "Нажать «Скрытые».", "expected_result": "Открыта вкладка скрытых публикаций; URL соответствует ей." },
+            { "position": 3, "action": "Обновить страницу.", "expected_result": "Вкладка «Скрытые» осталась открытой." }
+          ]
+        },
+        {
+          "id": null,
+          "key": null,
+          "title": "Переход на вкладку «Удалённые» и сохранение после обновления",
+          "position": 1,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "medium",
+          "behavior": "positive",
+          "layer": "e2e",
+          "automation_status": "automated",
+          "is_flaky": false,
+          "to_be_automated": true,
+          "muted_case": false,
+          "description": "Проверка отдельной вкладки удалённых публикаций без зависимости от содержимого общего аккаунта.",
+          "preconditions": "Пользователь авторизован.",
+          "steps": [
+            { "position": 1, "action": "Открыть «Мои публикации».", "expected_result": "Отображается вкладка «Удалённые»." },
+            { "position": 2, "action": "Нажать «Удалённые».", "expected_result": "Открыта вкладка удалённых публикаций; URL соответствует ей." },
+            { "position": 3, "action": "Обновить страницу.", "expected_result": "Вкладка «Удалённые» осталась открытой." }
+          ]
+        },
+        {
+          "id": null,
+          "key": null,
+          "title": "Скрытие собственной публикации и сохранение в списке скрытых",
+          "position": 2,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "high",
+          "behavior": "positive",
+          "layer": "e2e",
+          "automation_status": "automated",
+          "is_flaky": false,
+          "to_be_automated": true,
+          "muted_case": false,
+          "description": "Временная собственная публикация создаётся запросом API. Два нажатия в меню действий подтверждают скрытие; после обновления публикация остаётся среди скрытых.",
+          "preconditions": "Пользователь авторизован; через API создана его опубликованная запись.",
+          "steps": [
+            { "position": 1, "action": "Открыть собственную опубликованную запись.", "expected_result": "Публикация доступна и её заголовок отображается." },
+            { "position": 2, "action": "В меню действий нажать «Скрыть», затем «Скрыть публикацию?». ", "expected_result": "Скрытие подтверждено." },
+            { "position": 3, "action": "Открыть «Мои публикации» → «Скрытые».", "expected_result": "Скрытая публикация присутствует в списке." },
+            { "position": 4, "action": "Обновить страницу.", "expected_result": "Та же публикация остаётся в списке скрытых." }
+          ]
+        },
+        {
+          "id": null,
+          "key": null,
+          "title": "Удалённая собственная публикация появляется во вкладке «Удалённые»",
+          "position": 3,
+          "type": "other",
+          "status": "actual",
+          "severity": "normal",
+          "priority": "high",
+          "behavior": "positive",
+          "layer": "e2e",
+          "automation_status": "automated",
+          "is_flaky": false,
+          "to_be_automated": true,
+          "muted_case": false,
+          "description": "Проверка сохранения удалённой публикации в специальном списке после обновления страницы. Для удаления используется API, чтобы UI-проверка не зависела от способа подготовки состояния.",
+          "preconditions": "Пользователь авторизован; создана его временная публикация.",
+          "steps": [
+            { "position": 1, "action": "Удалить свою временную публикацию через API.", "expected_result": "Запрос удаления успешно завершён." },
+            { "position": 2, "action": "Открыть «Мои публикации» → «Удалённые».", "expected_result": "Удалённая публикация присутствует в списке." },
+            { "position": 3, "action": "Обновить страницу.", "expected_result": "Та же публикация остаётся в списке удалённых." }
+          ]
+        }
+      ],
+      "suites": []
+    }
+  ]
+}

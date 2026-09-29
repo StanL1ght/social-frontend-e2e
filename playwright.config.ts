@@ -8,7 +8,7 @@ export default defineConfig({
   fullyParallel: false,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: 1,
   timeout: 45_000,
   expect: {
     timeout: 10_000,
@@ -20,7 +20,8 @@ export default defineConfig({
   outputDir: 'test-results',
   use: {
     baseURL,
-    storageState: '.auth/user.json',
+    // Login/setup contexts must not depend on a session file they create.
+    storageState: { cookies: [], origins: [] },
     actionTimeout: 10_000,
     navigationTimeout: 30_000,
     trace: 'retain-on-failure',
@@ -34,21 +35,41 @@ export default defineConfig({
       name: 'setup',
       testMatch: /auth\.setup\.ts/,
       use: {
-        storageState: undefined,
+        storageState: { cookies: [], origins: [] },
+      },
+    },
+    {
+      name: 'unauthenticated-chromium',
+      testMatch: /auth\/login-ui\.spec\.ts/,
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: { cookies: [], origins: [] },
+        viewport: { width: 1366, height: 900 },
       },
     },
     {
       name: 'desktop-chromium',
       use: {
+        storageState: '.auth/user.json',
         ...devices['Desktop Chrome'],
         viewport: { width: 1366, height: 900 },
       },
       dependencies: ['setup'],
-      testIgnore: /mobile\/.*\.spec\.ts/,
+      testIgnore: [/mobile\/.*\.spec\.ts/, /auth\/login-ui\.spec\.ts/, /multi-user\/.*\.spec\.ts/],
+    },
+    {
+      name: 'multi-user-chromium',
+      testMatch: /multi-user\/.*\.spec\.ts/,
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: { cookies: [], origins: [] },
+        viewport: { width: 1366, height: 900 },
+      },
     },
     {
       name: 'mobile-chromium',
       use: {
+        storageState: '.auth/user.json',
         ...devices['Pixel 7'],
       },
       dependencies: ['setup'],
@@ -57,6 +78,7 @@ export default defineConfig({
     {
       name: 'mobile-webkit',
       use: {
+        storageState: '.auth/user.json',
         ...devices['iPhone 13'],
       },
       dependencies: ['setup'],

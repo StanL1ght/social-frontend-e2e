@@ -4,12 +4,12 @@ test.describe('Каталог персон', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/catalogs');
     await expect(
-      page.getByPlaceholder('Поиск по ФИО, Email или должности'),
+      page.locator('input[placeholder="Поиск по ФИО, Email или должности"]'),
     ).toBeVisible();
   });
 
   test('поиск использует отдельный запрос каталога @diagnostic', async ({ page }) => {
-    const search = page.getByPlaceholder('Поиск по ФИО, Email или должности');
+    const search = page.locator('input[placeholder="Поиск по ФИО, Email или должности"]');
     await search.fill('Тест');
 
     await expect(

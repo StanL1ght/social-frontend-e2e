@@ -1,16 +1,12 @@
 import { test, expect } from '../fixtures/test';
 
 test.describe('Служебные маршруты', () => {
-  test('неизвестный маршрут переводит на 404 @known-bug', async ({ page }) => {
-    test.fail(true, 'Известный дефект: неизвестный URL остаётся открытым без страницы 404');
-
+  test('неизвестный маршрут переводит на 404', async ({ page }) => {
     await page.goto('/qa-e2e-route-that-does-not-exist');
     await expect(page).toHaveURL(/\/404\/not-found/);
   });
 
-  test('/hashtag без id переводит на 404 @known-bug', async ({ page }) => {
-    test.fail(true, 'Известный дефект: /hashtag без id не переводит на страницу 404');
-
+  test('/hashtag без id переводит на 404', async ({ page }) => {
     await page.goto('/hashtag');
     await expect(page).toHaveURL(/\/404\/not-found/);
   });

@@ -11,6 +11,7 @@ test.describe('@mutation @diagnostic Индексация публикаций',
   test.skip(!env.runMutationTests, 'Для запуска установите RUN_MUTATION_TESTS=true');
 
   test('сравнить поиск поста из личной ленты и из группы', async ({ page }) => {
+    test.setTimeout(180_000);
     const groupName = uniqueMarker('GROUP');
     const personalTitle = uniqueMarker('POST') + '-PERSONAL';
     const groupTitle = uniqueMarker('POST') + '-GROUP';
@@ -39,10 +40,32 @@ test.describe('@mutation @diagnostic Индексация публикаций',
     };
 
     const appearsInGlobalSearch = async (title: string): Promise<boolean> => {
-      await page.goto('/feed');
-      await new AppShellPage(page).searchGlobally(title);
-      const dialog = page.getByRole('dialog', { name: 'Поиск' });
-      return dialog.getByText(title, { exact: true }).isVisible({ timeout: 15_000 });
+      await expect
+        .poll(
+          async () => {
+            await page.goto('/feed', { waitUntil: 'domcontentloaded' });
+            const searchResponse = page.waitForResponse(
+              (response) =>
+                /search|multisearch|multi-search/i.test(response.url()) &&
+                response.status() < 500,
+              { timeout: 20_000 },
+            );
+            await new AppShellPage(page).searchGlobally(title);
+            const response = await searchResponse;
+            expect(response.ok(), `Поиск завершился со статусом ${response.status()}`).toBe(true);
+            return page
+              .getByRole('dialog', { name: 'Поиск' })
+              .getByText(title, { exact: true })
+              .isVisible();
+          },
+          {
+            message: `Публикация ${title} должна появиться после завершения индексации`,
+            timeout: 60_000,
+            intervals: [2_000, 5_000, 10_000],
+          },
+        )
+        .toBe(true);
+      return true;
     };
 
     try {
