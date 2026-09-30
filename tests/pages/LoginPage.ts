@@ -31,7 +31,7 @@ export class LoginPage {
     await this.page.getByRole('button', { name: /войти/i }).click();
 
     const firstAttempt = await Promise.race([
-      this.page.waitForURL(/\/feed(?:\?|$)/, { timeout: 30_000 }).then(() => 'feed' as const),
+      this.page.waitForURL(/\/feed(?:\?|$)/, { timeout: 30_000, waitUntil: 'commit' }).then(() => 'feed' as const),
       this.page.getByText(/Please re-authenticate to continue/i)
         .waitFor({ state: 'visible', timeout: 30_000 })
         .then(() => 'reauthenticate' as const),
@@ -42,7 +42,7 @@ export class LoginPage {
     }
     if (!/\/feed(?:\?|$)/.test(new URL(this.page.url()).pathname)) {
       const postLogin = await Promise.race([
-        this.page.waitForURL(/\/feed(?:\?|$)/, { timeout: 30_000 }).then(() => 'feed' as const),
+        this.page.waitForURL(/\/feed(?:\?|$)/, { timeout: 30_000, waitUntil: 'commit' }).then(() => 'feed' as const),
         this.page.getByRole('button', { name: 'Закрыть', exact: true })
           .filter({ visible: true })
           .last()
@@ -54,7 +54,7 @@ export class LoginPage {
         await this.page.goto('/feed');
       }
     }
-    await this.page.waitForURL(/\/feed(?:\?|$)/, { timeout: 30_000 });
+    await this.page.waitForURL(/\/feed(?:\?|$)/, { timeout: 30_000, waitUntil: 'commit' });
     await expect(ready).toBeVisible({ timeout: 30_000 });
   }
 

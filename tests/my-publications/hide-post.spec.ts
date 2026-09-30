@@ -6,7 +6,7 @@ import { env } from '../helpers/env';
 
 test.skip(!env.runMutationTests, 'Запускать с RUN_MUTATION_TESTS=true: удаление переносит тестовую запись в «Удалённые».');
 
-test('своя публикация проходит через «Скрытые» и «Удалённые» @mutation', async ({ page }) => {
+test('ESN-497, ESN-498: своя публикация проходит через «Скрытые» и «Удалённые» @mutation', async ({ page }) => {
   const title = uniqueMarker('POST');
   let postId: string | undefined;
   let deleted = false;

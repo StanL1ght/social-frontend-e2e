@@ -6,6 +6,7 @@ import {
   joinTemporaryGroupViaApi,
 } from '../helpers/group-api';
 import { uniqueMarker } from '../helpers/test-data';
+import { deleteTemporaryPostViaApi } from '../helpers/post-api';
 import { LoginPage } from '../pages/LoginPage';
 import { PostComposerPage } from '../pages/PostComposerPage';
 
@@ -137,7 +138,7 @@ async function changeRoleViaUi(
 }
 
 test(
-  'ESN-136/ESN-137 — роли Пользователь, Автор и Администратор сохраняются в API и UI @multiuser @mutation',
+  'ESN-136/ESN-137/ESN-518 — роли Пользователь, Автор и Администратор сохраняются в API и UI @multiuser @mutation',
   async ({ browser }) => {
     test.skip(!hasMultiUserEnvironment, 'Нужны учётные данные двух пользователей');
     test.skip(!env.runMutationTests, 'Смена ролей разрешена только в mutation-режиме');
@@ -147,6 +148,7 @@ test(
     const memberContext = await browser.newContext({ baseURL: env.baseURL });
     const groupName = uniqueMarker('GROUP');
     let groupId: string | undefined;
+    let authorPostId: string | undefined;
 
     try {
       const ownerPage = await ownerContext.newPage();
@@ -194,7 +196,16 @@ test(
       await authorComposer.open();
       await authorComposer.selectDestination(groupName);
       await expect(authorComposer.dialog.getByRole('combobox').first()).toContainText(groupName);
-      await authorComposer.discard();
+      const authorTitle = uniqueMarker('POST');
+      await authorComposer.fill(authorTitle, 'Проверка публикации участника с ролью «Автор».');
+      const authored = memberPage.waitForResponse((response) =>
+        response.request().method() === 'POST' && /\/api\/post\/$/.test(response.url()),
+      );
+      await authorComposer.publishNow();
+      authorPostId = ((await (await authored).json()) as { id: string }).id;
+      await memberPage.goto(`/post/${authorPostId}`);
+      await expect(memberPage.getByRole('heading', { name: authorTitle, exact: true })).toBeVisible();
+      await expect(memberPage.getByRole('link', { name: groupName, exact: true }).first()).toBeVisible();
 
       await changeRoleViaUi(ownerPage, groupId, memberId, 'Автор', 'Администратор');
       await expectMemberPermissions(ownerPage, groupId, memberId, rolePermissions.Администратор);
@@ -243,6 +254,7 @@ test(
       await subscriberComposer.discard();
     } finally {
       const ownerPage = ownerContext.pages()[0];
+      if (ownerPage) await deleteTemporaryPostViaApi(ownerPage, authorPostId);
       if (ownerPage) await deleteTemporaryGroupViaApi(ownerPage, groupId);
       await memberContext.close();
       await ownerContext.close();

@@ -1,5 +1,10 @@
 import { test, expect } from '../fixtures/test';
 import { AppShellPage } from '../pages/AppShellPage';
+import { env } from '../helpers/env';
+import { createTemporaryPostViaApi, deleteTemporaryPostViaApi } from '../helpers/post-api';
+import { createTemporaryGroupViaApi, deleteTemporaryGroupViaApi } from '../helpers/group-api';
+import { uniqueMarker } from '../helpers/test-data';
+import { PostPage } from '../pages/PostPage';
 
 test.describe('Моя страница', () => {
   test.beforeEach(async ({ page }) => {
@@ -28,11 +33,17 @@ test.describe('Моя страница', () => {
     await expect(page.locator('a[href*="/post/"]').first()).toBeVisible();
   });
 
-  test('ESN-342: открывает список подписчиков на вкладке «Участники»', async ({ page }) => {
+  test('ESN-342, ESN-511: открывает подписчиков и профиль участника', async ({ page }) => {
     const participants = page.getByRole('button', { name: 'Участники', exact: true });
     await participants.click();
     await expect(participants).toHaveClass(/s-active-link/);
-    await expect(page.getByText(/Подписчики|Подписки/i).first()).toBeVisible();
+    await expect(page.getByText(/Всего участников:/i)).toBeVisible();
+    const person = page.locator('a[href*="/profile/"]').filter({ visible: true }).last();
+    await expect(person).toBeVisible();
+    const target = await person.getAttribute('href');
+    expect(target).toMatch(/\/profile\//);
+    await person.click();
+    await expect(page).toHaveURL(new RegExp(target!.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   });
 
   test('ESN-96: переключает подписчиков и подписки и открывает профиль из списка', async ({ page }) => {
@@ -86,6 +97,40 @@ test.describe('Моя страница', () => {
     await pinned.click();
     await expect(pinned).toHaveClass(/checked/);
     await expect(page.getByRole('button', { name: 'Все', exact: true })).not.toHaveClass(/checked/);
+  });
+
+  test('ESN-510: вкладка закреплённых показывает только закреплённую публикацию @mutation', async ({ page }) => {
+    test.fixme(true, 'Кейс в draft: личный пост нельзя закрепить, а закреплённый в группе пост не попадает во вкладку профиля');
+    test.skip(!env.runMutationTests, 'Нужны две временные публикации');
+    const pinnedTitle = `${uniqueMarker('POST')}-PINNED-PROFILE`;
+    const ordinaryTitle = `${uniqueMarker('POST')}-ORDINARY-PROFILE`;
+    let pinnedId: string | undefined;
+    let ordinaryId: string | undefined;
+    let groupId: string | undefined;
+    try {
+      groupId = await createTemporaryGroupViaApi(page, uniqueMarker('GROUP'), 'Публичная группа');
+      pinnedId = await createTemporaryPostViaApi(page, pinnedTitle, groupId);
+      ordinaryId = await createTemporaryPostViaApi(page, ordinaryTitle);
+      await page.goto(`/post/${pinnedId}`);
+      await new PostPage(page).openActions();
+      await page.getByRole('menuitem', { name: 'Прикрепить пост', exact: true }).click();
+      const confirmation = page.getByRole('menuitem', { name: 'Прикрепить пост?', exact: true });
+      if (await confirmation.isVisible()) await confirmation.click();
+
+      await new AppShellPage(page).openSection('Моя страница');
+      const pinned = page.getByRole('button', { name: /Закрепл[её]нные публикации/i });
+      await pinned.click();
+      const heading = page.getByRole('heading', { name: pinnedTitle, exact: true });
+      await expect(heading).toBeVisible();
+      await expect(page.getByRole('heading', { name: ordinaryTitle, exact: true })).toHaveCount(0);
+      await heading.click();
+      await expect(page).toHaveURL(new RegExp(`/post/${pinnedId}`));
+      await expect(page.getByRole('heading', { name: pinnedTitle, exact: true })).toBeVisible();
+    } finally {
+      await deleteTemporaryPostViaApi(page, ordinaryId);
+      await deleteTemporaryPostViaApi(page, pinnedId);
+      await deleteTemporaryGroupViaApi(page, groupId);
+    }
   });
 
   test('ESN-343: вкладка «Реакции и комментарии» открывается на реакциях', async ({ page }) => {

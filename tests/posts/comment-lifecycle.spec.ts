@@ -47,7 +47,7 @@ test.describe('@mutation Комментарии и ответы', () => {
     }
   });
 
-  test('ESN-335: отменяет редактирование комментария с вложением', async ({ page }) => {
+  test('ESN-335, ESN-483: отменяет редактирование комментария без изменения исходных вложений', async ({ page }) => {
     test.fail(true, 'Известный дефект: после отмены редактирования файлы и музыка остаются видимыми в редакторе');
     const title = uniqueMarker('POST');
     const comment = `${uniqueMarker('COMMENT')}-CANCEL-EDIT`;
@@ -177,6 +177,38 @@ test.describe('@mutation Комментарии и ответы', () => {
       await page.keyboard.press('Enter');
       expect((await created).ok()).toBe(true);
       await expect(comments.getByText(comment, { exact: true })).toBeVisible({ timeout: 15_000 });
+    } finally {
+      await deletePostIfPresent(page, postUrl);
+    }
+  });
+
+  test('ESN-504: эмодзи из панели сохраняется в комментарии после обновления', async ({ page }) => {
+    test.fixme(true, 'Кейс в статусе draft: в текущем редакторе комментария нет панели выбора эмодзи');
+    const title = uniqueMarker('POST');
+    const suffix = `${uniqueMarker('COMMENT')}-EMOJI`;
+    let postUrl: string | undefined;
+    try {
+      postUrl = await createPost(page, title, 'Проверка эмодзи в комментарии.');
+      await page.goto(postUrl);
+      const comments = page.getByRole('dialog', { name: 'Комментарии' });
+      const editor = comments.locator('.ql-editor[contenteditable="true"]');
+      await editor.click();
+      await comments.getByRole('button', { name: /эмодзи/i }).click();
+      const emojiPanel = page.getByRole('dialog').filter({ has: page.getByRole('button', { name: /😀|улыб/i }) }).last();
+      await expect(emojiPanel).toBeVisible();
+      await emojiPanel.getByRole('button', { name: /😀|улыб/i }).first().click();
+      await editor.press('End');
+      await page.keyboard.insertText(` ${suffix}`);
+      await expect(editor).toContainText(suffix);
+      await comments.getByRole('button', { name: 'Отправить' }).click();
+      const card = comments.locator('network-comment-card').filter({ hasText: suffix });
+      await expect(card).toContainText(suffix);
+      await expect(card).toContainText(/😀|🙂|😊/);
+      await page.reload();
+      const restored = page.getByRole('dialog', { name: 'Комментарии' })
+        .locator('network-comment-card').filter({ hasText: suffix });
+      await expect(restored).toContainText(suffix);
+      await expect(restored).toContainText(/😀|🙂|😊/);
     } finally {
       await deletePostIfPresent(page, postUrl);
     }

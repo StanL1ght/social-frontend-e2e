@@ -6,7 +6,7 @@ test.describe('Мои публикации', () => {
     await expect(page.getByRole('button', { name: /Опубликованные \d+/ })).toBeVisible();
   });
 
-  test('отображает вкладки и счётчики @smoke', async ({ page }) => {
+  test('отображает вкладки и счётчики @smoke @critical', async ({ page }) => {
     await expect(page.getByRole('button', { name: /Опубликованные \d+/ })).toBeVisible();
     await expect(page.getByRole('button', { name: /Запланированные \d+/ })).toBeVisible();
     await expect(page.getByRole('button', { name: /Черновики \d+/ })).toBeVisible();

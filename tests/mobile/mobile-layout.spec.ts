@@ -101,4 +101,41 @@ test.describe('@mobile Мобильный и узкий вид', () => {
       await composer.discard();
     }
   });
+
+  test('ESN-495, ESN-496 @mobile: вкладки скрытых и удалённых доступны на телефоне', async ({ page }) => {
+    await page.goto('/my-publications/published');
+    for (const tab of [
+      { label: 'Скрытые', route: 'hidden' },
+      { label: 'Удалённые', route: 'deleted' },
+    ]) {
+      const button = page.getByRole('button', { name: new RegExp(`^${tab.label}(?: \\d+)?$`) });
+      await expect(button).toBeVisible();
+      await button.click();
+      await expect(page).toHaveURL(new RegExp(`/my-publications/${tab.route}(?:[/?#]|$)`));
+      const dimensions = await page.evaluate(() => ({
+        viewport: document.documentElement.clientWidth,
+        content: document.documentElement.scrollWidth,
+      }));
+      expect(dimensions.content, `Горизонтальная прокрутка на вкладке «${tab.label}»`).toBeLessThanOrEqual(dimensions.viewport + 1);
+    }
+  });
+
+  test('@mobile: вкладки групп и поиск доступны касанием', async ({ page }) => {
+    await page.goto('/group');
+    const tabs = page.getByRole('radiogroup');
+    await expect(tabs).toBeVisible();
+    await tabs.getByRole('button', { name: 'Все группы', exact: true }).click();
+    await expect(page).toHaveURL(/\/group\/all(?:[/?#]|$)/);
+    const search = page.locator('input[placeholder="Поиск"]:visible').first();
+    await expect(search).toBeVisible();
+    await search.fill('Тест');
+    await expect(search).toHaveValue('Тест');
+    await tabs.getByRole('button', { name: 'Вы подписаны', exact: true }).click();
+    await expect(page).toHaveURL(/\/group(?:[/?#]|$)/);
+    const width = await page.evaluate(() => ({
+      viewport: document.documentElement.clientWidth,
+      content: document.documentElement.scrollWidth,
+    }));
+    expect(width.content).toBeLessThanOrEqual(width.viewport + 1);
+  });
 });

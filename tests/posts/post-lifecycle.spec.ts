@@ -8,7 +8,7 @@ import { createPost, deletePostIfPresent } from '../helpers/post-lifecycle';
 test.describe('@mutation Жизненный цикл публикации', () => {
   test.skip(!env.runMutationTests, 'Для запуска установите RUN_MUTATION_TESTS=true');
 
-  test('создать пост, поставить реакцию, написать комментарий и удалить пост', async ({ page }) => {
+  test('создать пост, поставить реакцию, написать комментарий и удалить пост @critical', async ({ page }) => {
     const postTitle = uniqueMarker('POST');
     const comment = uniqueMarker('COMMENT');
     const body = 'Автоматическая E2E-проверка. Запись будет удалена после теста.';

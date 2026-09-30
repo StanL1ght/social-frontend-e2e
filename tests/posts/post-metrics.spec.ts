@@ -86,6 +86,40 @@ test.describe('@mutation Реакции и счётчики публикации
     }
   });
 
+  test('ESN-501: снятая реакция с публикации не восстанавливается после обновления', async ({ page }) => {
+    const title = uniqueMarker('POST');
+    let postUrl: string | undefined;
+    try {
+      postUrl = await createPost(page, title, 'Проверка снятия реакции с публикации.');
+      await page.goto(postUrl);
+      const reaction = page.locator('button.s-post-card-reaction-btn');
+      await expect(reaction).toHaveAttribute('title', 'Нравится');
+      const added = page.waitForResponse((response) =>
+        response.request().method() === 'POST' && /\/post\/.*\/react\/?(?:\?|$)/i.test(response.url()),
+      );
+      await reaction.click();
+      expect((await added).ok()).toBe(true);
+      await expect(reaction).toHaveAttribute('title', 'Симпатия');
+      const users = page.getByRole('button', { name: /Симпатия/ }).first();
+      await expect(users).toBeVisible();
+      await users.click();
+      await expect(page.getByRole('dialog', { name: /Реакции/ }).locator('a[href*="/profile/"]').first()).toBeVisible();
+      await page.keyboard.press('Escape');
+
+      const removed = page.waitForResponse((response) =>
+        ['DELETE', 'POST'].includes(response.request().method()) && /\/post\/.*\/react\/?(?:\?|$)/i.test(response.url()),
+      );
+      await reaction.click();
+      expect((await removed).ok()).toBe(true);
+      await expect(reaction).toHaveAttribute('title', 'Нравится');
+      await page.reload();
+      await expect(reaction).toHaveAttribute('title', 'Нравится');
+      await expect(page.getByRole('button', { name: /Симпатия/ })).toHaveCount(0);
+    } finally {
+      await deletePostIfPresent(page, postUrl);
+    }
+  });
+
   test('ESN-61, ESN-64: реакции к комментариям трёх постов и список отреагировавших', async ({ page }) => {
     test.setTimeout(120_000);
     const postUrls: string[] = [];

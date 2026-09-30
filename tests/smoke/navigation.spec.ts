@@ -26,7 +26,7 @@ test.describe('@smoke Основная навигация', () => {
     await expect(page).toHaveURL(/\/feed/);
   });
 
-  test('ESN-26: гамбургер открывает боковую панель и все её разделы', async ({ page }) => {
+  test('ESN-26: гамбургер открывает боковую панель и все её разделы @critical', async ({ page }) => {
     const groupsLink = page.getByRole('link', { name: 'Группы', exact: true });
     const menu = page.getByRole('button', { name: '' }).first();
     await expect(groupsLink).toBeVisible();

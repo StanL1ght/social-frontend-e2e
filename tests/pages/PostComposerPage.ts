@@ -8,7 +8,7 @@ export class PostComposerPage {
 
   constructor(private readonly page: Page) {
     this.dialog = page.getByRole('dialog', {
-      name: /Новая публикация|Редактирование публикации|Редактировать публикацию|Репост/,
+      name: /Новая публикация|Редактирование (?:запланированной )?публикации|Редактировать публикацию|Репост/,
     });
     this.editor = this.dialog.locator('[contenteditable="true"]').first();
     this.titleBlock = this.editor.locator('h1[data-title="true"]');

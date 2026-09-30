@@ -104,8 +104,7 @@ test.describe('Список групп', () => {
     }
   });
 
-  test('ESN-176: после возврата восстанавливается позиция списка групп', async ({ page }) => {
-    test.fail(true, 'Dev возвращает список групп к scrollTop=0 вместо позиции открытой карточки');
+  test('ESN-485: после возврата восстанавливается позиция списка групп', async ({ page }) => {
     await page.goto('/group/all');
     await expect(page.getByText(/Публичная группа|Закрытая группа|Скрытая группа/).first()).toBeVisible({ timeout: 20_000 });
     const foundScrollable = await page.locator('body *').evaluateAll((elements) => {

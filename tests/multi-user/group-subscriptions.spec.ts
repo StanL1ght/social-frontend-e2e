@@ -30,8 +30,92 @@ test.describe('@multiuser @mutation Подписки на группы', () => {
   test.setTimeout(120_000);
   test.skip(!hasMultiUserEnvironment || !env.runMutationTests, 'Нужны два пользователя и mutation-режим');
 
+  test('ESN-521: запрос доступа в скрытую группу виден заявителю и владельцу', async ({ browser }) => {
+    const adminContext = await loggedInContext(browser, env.email, env.password);
+    const memberContext = await loggedInContext(browser, env.memberEmail, env.memberPassword);
+    const adminPage = adminContext.pages()[0];
+    const memberPage = memberContext.pages()[0];
+    let groupId: string | undefined;
+    try {
+      groupId = await createTemporaryGroupViaApi(adminPage, `${uniqueMarker('GROUP')}-SECRET`, 'Скрытая группа');
+      await memberPage.goto(`/group/${groupId}/posts`);
+      const request = memberPage.getByRole('button', { name: /Запросить доступ|Подать заявку/ }).first();
+      await expect(request).toBeVisible();
+      const requested = memberPage.waitForResponse((response) =>
+        response.request().method() !== 'GET' && response.url().includes(`/api/group/${groupId}`),
+      );
+      await request.click();
+      expect((await requested).ok()).toBe(true);
+      await expect(memberPage.getByRole('button', { name: /Запрос отправлен|Доступ запрошен|Заявка отправлена/ })).toBeVisible();
+      await memberPage.reload();
+      await expect(memberPage.getByRole('button', { name: /Запрос отправлен|Доступ запрошен|Заявка отправлена/ })).toBeVisible();
+      await expect(memberPage.getByRole('button', { name: /^(Запросить доступ|Подать заявку)$/ })).toHaveCount(0);
+
+      await adminPage.goto(`/group/${groupId}/posts`);
+      await adminPage.getByRole('button', { name: 'Вы администратор', exact: true }).click();
+      await adminPage.getByRole('menuitem', { name: 'Заявки на добавление', exact: true }).click();
+      const applications = adminPage.getByRole('dialog').filter({ hasText: /Заявки на добавление/ }).last();
+      await expect(applications).toBeVisible();
+      const current = await memberPage.request.get('https://dev-social-backend.sddt.efko.ru/api/user/current');
+      expect(current.ok()).toBe(true);
+      const member = await current.json() as { first_name: string; last_name: string };
+      await expect(applications).toContainText(member.first_name);
+      await expect(applications).toContainText(member.last_name);
+    } finally {
+      await deleteTemporaryGroupViaApi(adminPage, groupId);
+      await memberContext.close();
+      await adminContext.close();
+    }
+  });
+
+  test('ESN-520 (частично): владелец принимает и отклоняет заявки в двух временных группах', async ({ browser }) => {
+    test.setTimeout(150_000);
+    const adminContext = await loggedInContext(browser, env.email, env.password);
+    const memberContext = await loggedInContext(browser, env.memberEmail, env.memberPassword);
+    const adminPage = adminContext.pages()[0];
+    const memberPage = memberContext.pages()[0];
+    const groupIds: string[] = [];
+    try {
+      for (const decision of ['Принять', 'Отклонить'] as const) {
+        const groupId = await createTemporaryGroupViaApi(
+          adminPage, `${uniqueMarker('GROUP')}-${decision}`, 'Закрытая группа',
+        );
+        groupIds.push(groupId);
+        await memberPage.goto(`/group/${groupId}/posts`);
+        const request = memberPage.getByRole('button', { name: /Запросить доступ|Подать заявку/ }).first();
+        await expect(request).toBeVisible();
+        const requested = memberPage.waitForResponse((response) =>
+          response.request().method() !== 'GET' && response.url().includes(`/api/group/${groupId}`),
+        );
+        await request.click();
+        expect((await requested).ok()).toBe(true);
+
+        await adminPage.goto(`/group/${groupId}/posts`);
+        await adminPage.getByRole('button', { name: 'Вы администратор', exact: true }).click();
+        await adminPage.getByRole('menuitem', { name: 'Заявки на добавление', exact: true }).click();
+        const applications = adminPage.getByRole('dialog').filter({ hasText: /Заявки на добавление/ }).last();
+        await expect(applications).toBeVisible();
+        await expect(applications.getByRole('button', { name: 'Принять', exact: true })).toBeVisible();
+        await expect(applications.getByRole('button', { name: 'Отклонить', exact: true })).toBeVisible();
+        const processed = adminPage.waitForResponse((response) =>
+          response.request().method() !== 'GET' && response.url().includes(`/api/group/${groupId}`),
+        );
+        await applications.getByRole('button', { name: decision, exact: true }).click();
+        expect((await processed).ok()).toBe(true);
+        await expect(applications.getByRole('button', { name: decision, exact: true })).toHaveCount(0);
+        const membership = await memberPage.request.get(`https://dev-social-backend.sddt.efko.ru/api/group/${groupId}`);
+        expect(membership.ok()).toBe(true);
+        expect(await membership.json()).toMatchObject({ is_member: decision === 'Принять' });
+      }
+    } finally {
+      for (const groupId of groupIds) await deleteTemporaryGroupViaApi(adminPage, groupId);
+      await memberContext.close();
+      await adminContext.close();
+    }
+  });
+
   for (const groupType of ['Публичная группа', 'Закрытая группа'] as const) {
-    test(`${groupType}: подписка или запрос доступа`, async ({ browser }) => {
+    test(`${groupType === 'Закрытая группа' ? 'ESN-144: ' : ''}${groupType}: подписка или запрос доступа`, async ({ browser }) => {
       const adminContext = await loggedInContext(browser, env.email, env.password);
       const memberContext = await loggedInContext(browser, env.memberEmail, env.memberPassword);
       const adminPage = adminContext.pages()[0];
@@ -125,6 +209,16 @@ test.describe('@multiuser @mutation Подписки на группы', () => {
             memberPage.getByRole('button', { name: /^(Подать заявку|Запросить доступ|Подписаться)$/ }),
             'После обновления нельзя повторно отправить тот же запрос на доступ',
           ).toHaveCount(0);
+          const current = await memberPage.request.get('https://dev-social-backend.sddt.efko.ru/api/user/current');
+          expect(current.ok()).toBe(true);
+          const applicant = await current.json() as { first_name: string };
+          await adminPage.goto(groupUrl);
+          await adminPage.getByRole('button', { name: 'Вы администратор', exact: true }).click();
+          await adminPage.getByRole('menuitem', { name: 'Заявки на добавление', exact: true }).click();
+          const applications = adminPage.getByRole('dialog').filter({ hasText: /Заявки на добавление/ }).last();
+          await expect(applications).toContainText(applicant.first_name);
+          await expect(applications.getByRole('button', { name: 'Принять', exact: true })).toBeVisible();
+          await expect(applications.getByRole('button', { name: 'Отклонить', exact: true })).toBeVisible();
         }
       } finally {
         await deleteTemporaryGroupViaApi(adminPage, groupId);

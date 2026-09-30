@@ -7,7 +7,7 @@ test.describe('Глобальный поиск', () => {
     await new AppShellPage(page).goto('/feed');
   });
 
-  test('открывается и закрывается по Escape @smoke', async ({ page }) => {
+  test('открывается и закрывается по Escape @smoke @critical', async ({ page }) => {
     const shell = new AppShellPage(page);
     await shell.openGlobalSearch();
 

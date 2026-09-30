@@ -201,7 +201,7 @@ test('ESN-332: участник не видит статистику после 
   }
 });
 
-test('UNKEYED-02: завершение опроса после указанного срока @multiuser @mutation', async ({ browser }) => {
+test('ESN-486: завершение опроса после указанного срока @multiuser @mutation', async ({ browser }) => {
   test.skip(!hasMultiUserEnvironment || !env.runMutationTests, 'Нужны два пользователя и mutation-режим');
   test.fixme(true, 'API-создание с близким ends_at пока отображает исходный срок шаблона; нужен подтверждённый способ подготовки завершённого опроса');
   test.setTimeout(300_000);

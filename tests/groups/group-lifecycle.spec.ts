@@ -10,7 +10,7 @@ import { PostComposerPage } from '../pages/PostComposerPage';
 test.describe('@mutation Жизненный цикл группы', () => {
   test.skip(!env.runMutationTests, 'Для запуска установите RUN_MUTATION_TESTS=true');
 
-  test('ESN-115, ESN-117: создать публичную группу с изображением и удалить её через UI', async ({ page }) => {
+  test('ESN-115, ESN-117: создать публичную группу с изображением и удалить её через UI @critical', async ({ page }) => {
     const name = uniqueMarker('GROUP');
     const description = 'Автоматическая E2E-проверка. Группа будет удалена после теста.';
     let groupUrl: string | undefined;
